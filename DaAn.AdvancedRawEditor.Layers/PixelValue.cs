@@ -43,7 +43,6 @@ namespace DaAn.AdvancedRawEditor.Layers
             return new PixelValue(this.R, this.G, this.B);
         }
 
-
         public static implicit operator PixelValue(double v)  // explicit byte to digit conversion operator
         {
             return new PixelValue(v, v, v);

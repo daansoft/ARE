@@ -6,20 +6,16 @@ using System.Threading.Tasks;
 
 namespace DaAn.AdvancedRawEditor.Layers
 {
-    public class GroupLayer : ILayer, IMask
+    public class GroupLayer : ILayer
     {
         public ILayer PreviousLayer { get; set; }
         public ILayer NextLayer { get; set; }
-        public double[][] Mask { get; set; }
 
         private List<ILayer> Layers;
 
         public PixelValue GetPixelValue(int x, int y)
         {
             var parentValue = this.PreviousLayer.GetPixelValue(x, y);
-
-
-
 
             throw new NotImplementedException();
         }
@@ -43,6 +39,18 @@ namespace DaAn.AdvancedRawEditor.Layers
         public void Initialize()
         {
             this.Layers = new List<ILayer>();
+        }
+
+
+        public void AddForLayer(ILayer layer)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public void DeleteCurrentLayer(ILayer layer)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -6,34 +6,40 @@ using System.Threading.Tasks;
 
 namespace DaAn.AdvancedRawEditor.Layers
 {
-    public abstract class Layer
+    public abstract class BaseLayer: ILayer
     {
-        public Layer PreviousLayer { get; set; }
-        public Layer NextLayer { get; set; }
-        public ILayerMix LayerMix { get; set; }
-
-        public double[][] Mask { get; set; }
-        private PixelValue[][] Cache;
+        public ILayer PreviousLayer { get; set; }
+        public ILayer NextLayer { get; set; }
 
         public PixelValue GetPixelValue(int x, int y)
         {
-            if (this.Cache == null)
-            {
+            PixelValue maskedInputValue = PixelValue.White;
+            PixelValue maskedOutputValue = PixelValue.White;
+            double maskValue = 1;
 
+            if (mask != null)
+            {
+                maskValue = mask[x][y];
             }
 
-            return this.Cache[x][y];
-        }
+            PixelValue inputValue = PixelValue.One;
 
-        public void RefreshCache()
-        {
-            for (int x = 0; x < this.PreviousLayer.GetWidth(); x++)
+            if (previousLayer != null)
             {
-                for (int y = 0; y < this.PreviousLayer.GetHeigth(); y++)
+                inputValue = previousLayer.GetPixelValue(x, y);
+
+                if (maskValue < 1.0)
                 {
-                    this.Cache[x][y] = this.PreviousLayer.GetPixelValue(x, y);
+                    maskedInputValue = inputValue * (1 - maskValue);
                 }
             }
+
+            if (maskValue > 0.0)
+            {
+                maskedOutputValue = applyFilter(inputValue, x, y) * maskValue;
+            }
+
+            return layerMix.GetValue(maskedInputValue, maskedOutputValue);
         }
 
         /*public static PixelValue GetMaskedPixelValue(Layer previousLayer, double[][] mask, ILayerMix layerMix, Func<PixelValue, int, int, PixelValue> applyFilter)

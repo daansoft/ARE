@@ -14,5 +14,7 @@ namespace DaAn.AdvancedRawEditor.Layers
         void Initialize();
         int GetWidth();
         int GetHeigth();
+        void AddForLayer(ILayer layer);
+        void DeleteCurrentLayer(ILayer layer);
     }
 }

@@ -39,19 +39,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ILayerMix.cs" />
-    <Compile Include="Layer.cs" />
-    <Compile Include="LayerMixes\NormalLayerMix.cs" />
+    <Compile Include="CacheLayer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GroupLayer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ILayer.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="LayerMixMethod.cs" />
+    <Compile Include="MaskLayer.cs" />
     <Compile Include="PixelValue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="EffectLayers\" />
     <Folder Include="FileLayers\" />
+    <Folder Include="LayerMixes\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Articles.txt" />
+    <Content Include="Documents\Articles.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Documents\Color Calculating Color Temperature DN25.pdf" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
