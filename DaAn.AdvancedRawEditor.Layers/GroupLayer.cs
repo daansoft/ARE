@@ -48,7 +48,7 @@ namespace DaAn.AdvancedRawEditor.Layers
         }
 
 
-        public void DeleteCurrentLayer(ILayer layer)
+        public void DeleteCurrentLayer()
         {
             throw new NotImplementedException();
         }
