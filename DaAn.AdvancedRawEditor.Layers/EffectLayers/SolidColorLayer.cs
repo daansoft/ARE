@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DaAn.AdvancedRawEditor.Layers.EffectLayers
 {
-    public class SolidColorLayer: ILayer
+    public class SolidColorLayer : ILayer
     {
         public ILayer PreviousLayer { get; set; }
         public ILayer NextLayer { get; set; }
@@ -41,6 +41,11 @@ namespace DaAn.AdvancedRawEditor.Layers.EffectLayers
         public void DeleteCurrentLayer()
         {
             throw new NotImplementedException();
+        }
+
+        public string GetName()
+        {
+            return "Solid color";
         }
     }
 }

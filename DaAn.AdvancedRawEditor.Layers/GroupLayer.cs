@@ -35,7 +35,7 @@ namespace DaAn.AdvancedRawEditor.Layers
             layer.PreviousLayer = this.PreviousLayer;
             this.Layers.Add(layer);
         }
-        
+
         public void Initialize()
         {
             this.Layers = new List<ILayer>();
@@ -51,6 +51,11 @@ namespace DaAn.AdvancedRawEditor.Layers
         public void DeleteCurrentLayer()
         {
             throw new NotImplementedException();
+        }
+
+        public string GetName()
+        {
+            return string.Format("Group layer for [{0}]", string.Join(", ", this.Layers.Select(r=>r.GetName())));
         }
     }
 }

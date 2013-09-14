@@ -47,5 +47,10 @@ namespace DaAn.AdvancedRawEditor.Layers.EffectLayers
         {
             throw new NotImplementedException();
         }
+
+        public string GetName()
+        {
+            return "Black & White";
+        }
     }
 }

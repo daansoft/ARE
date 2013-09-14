@@ -58,5 +58,10 @@ namespace DaAn.AdvancedRawEditor.Layers
         {
             throw new NotImplementedException();
         }
+
+        public string GetName()
+        {
+            return string.Format("Mix layer for {0}", this.CurrentLayer.GetName());
+        }
     }
 }

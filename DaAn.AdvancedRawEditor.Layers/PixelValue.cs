@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,6 +47,11 @@ namespace DaAn.AdvancedRawEditor.Layers
         public static implicit operator PixelValue(double v)  // explicit byte to digit conversion operator
         {
             return new PixelValue(v, v, v);
+        }
+
+        public static implicit operator PixelValue(Color v)  // explicit byte to digit conversion operator
+        {
+            return new PixelValue(v.R, v.G, v.B);
         }
 
         public static PixelValue operator *(PixelValue lhs, PixelValue rhs)

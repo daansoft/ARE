@@ -68,5 +68,11 @@ namespace DaAn.AdvancedRawEditor.Layers
         {
             throw new NotImplementedException();
         }
+
+
+        public string GetName()
+        {
+            return string.Format("Cache layer for {0}", this.PreviousLayer.GetName());
+        }
     }
 }
