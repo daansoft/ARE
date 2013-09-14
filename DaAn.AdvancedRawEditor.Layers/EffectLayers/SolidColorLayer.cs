@@ -4,16 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DaAn.AdvancedRawEditor.Layers.FileLayers
+namespace DaAn.AdvancedRawEditor.Layers.EffectLayers
 {
-    public class JpgFileLayer: ILayer
+    public class SolidColorLayer: ILayer
     {
         public ILayer PreviousLayer { get; set; }
         public ILayer NextLayer { get; set; }
 
+        public PixelValue Color { get; set; }
+
         public PixelValue GetPixelValue(int x, int y)
         {
-            throw new NotImplementedException();
+            return this.Color;
         }
 
         public void Initialize()

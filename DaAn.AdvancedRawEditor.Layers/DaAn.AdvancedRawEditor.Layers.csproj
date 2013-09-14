@@ -42,7 +42,12 @@
     <Compile Include="CacheLayer.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="MixLayer.cs" />
     <Compile Include="EffectLayers\BWLayer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EffectLayers\SolidColorLayer.cs" />
+    <Compile Include="FileLayers\JpgFileLayer.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="GroupLayer.cs">
@@ -57,7 +62,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="FileLayers\" />
     <Folder Include="LayerMixes\" />
   </ItemGroup>
   <ItemGroup>
