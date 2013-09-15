@@ -6,18 +6,16 @@ using System.Threading.Tasks;
 
 namespace DaAn.AdvancedRawEditor.Layers
 {
-    public class MixLayer : ILayer
+    public class MixLayer : BaseLayer
     {
-        public ILayer PreviousLayer { get; set; }
         public ILayer CurrentLayer { get; set; }
-        public ILayer NextLayer { get; set; }
-        public LayerMixMethod MixMethod { get; set; }
+        public MixLayerMethod MixMethod { get; set; }
 
-        public PixelValue GetPixelValue(int x, int y)
+        public override PixelValue GetPixelValue(int x, int y)
         {
             switch (this.MixMethod)
             {
-                case LayerMixMethod.Normal:
+                case MixLayerMethod.Normal:
                     return this.MixNormal(x, y);
                 default:
                     return this.MixNormal(x, y);
@@ -29,39 +27,14 @@ namespace DaAn.AdvancedRawEditor.Layers
             return this.PreviousLayer.GetPixelValue(x, y) + this.CurrentLayer.GetPixelValue(x, y);
         }
 
-        public void Initialize()
+        public override void Initialize()
         {
-            this.MixMethod = LayerMixMethod.Normal;
+            this.MixMethod = MixLayerMethod.Normal;
         }
 
-        public int GetWidth()
+        public override string GetName()
         {
-            return this.PreviousLayer.GetWidth();
-        }
-
-        public int GetHeigth()
-        {
-            return this.PreviousLayer.GetHeigth();
-        }
-
-
-        public void AddForLayer(ILayer layer)
-        {
-            this.PreviousLayer = layer.PreviousLayer;
-            this.CurrentLayer = layer;
-            this.NextLayer = layer.NextLayer;
-            layer.NextLayer.PreviousLayer = this;
-        }
-
-
-        public void DeleteCurrentLayer()
-        {
-            throw new NotImplementedException();
-        }
-
-        public string GetName()
-        {
-            return string.Format("Mix layer for {0}", this.CurrentLayer.GetName());
+            return string.Format("{0}\n[Mix layer for {0}]", this.PreviousLayer.GetName(), this.CurrentLayer.GetName());
         }
     }
 }

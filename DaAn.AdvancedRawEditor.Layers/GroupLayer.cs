@@ -6,56 +6,43 @@ using System.Threading.Tasks;
 
 namespace DaAn.AdvancedRawEditor.Layers
 {
-    public class GroupLayer : ILayer
+    public class GroupLayer : BaseLayer
     {
-        public ILayer PreviousLayer { get; set; }
-        public ILayer NextLayer { get; set; }
+        private static AddLayerMethod[] AllowedMethod = new AddLayerMethod[] { AddLayerMethod.AsNext, AddLayerMethod.IncludeCurrent };
 
         private List<ILayer> Layers;
 
-        public PixelValue GetPixelValue(int x, int y)
+        public override PixelValue GetPixelValue(int x, int y)
         {
             var parentValue = this.PreviousLayer.GetPixelValue(x, y);
 
             throw new NotImplementedException();
         }
 
-        public int GetWidth()
+        public override void Initialize()
         {
-            return this.PreviousLayer.GetWidth();
+            this.Layers = new List<ILayer>();
         }
 
-        public int GetHeigth()
+        public override string GetName()
         {
-            return this.PreviousLayer.GetHeigth();
+            return string.Format("[Group layer for {0}]", string.Join(", ", this.Layers.Select(r => r.GetName())));
         }
 
-        public void Add(ILayer layer)
+        public override AddLayerMethod[] GetAddLayerMethods()
+        {
+            return GroupLayer.AllowedMethod;
+        }
+
+        protected override void AddInside(ILayer layer)
         {
             layer.PreviousLayer = this.PreviousLayer;
             this.Layers.Add(layer);
         }
 
-        public void Initialize()
+        protected override void AddAndIncludeCurrent(ILayer layer)
         {
-            this.Layers = new List<ILayer>();
-        }
-
-
-        public void AddForLayer(ILayer layer)
-        {
-            throw new NotImplementedException();
-        }
-
-
-        public void DeleteCurrentLayer()
-        {
-            throw new NotImplementedException();
-        }
-
-        public string GetName()
-        {
-            return string.Format("Group layer for [{0}]", string.Join(", ", this.Layers.Select(r=>r.GetName())));
+            base.AddAndIncludeCurrent(layer);
         }
     }
 }

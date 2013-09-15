@@ -7,47 +7,35 @@ using System.Threading.Tasks;
 
 namespace DaAn.AdvancedRawEditor.Layers.FileLayers
 {
-    public class JpgFileLayer : ILayer
+    public class JpgFileLayer : BaseLayer
     {
-        public ILayer PreviousLayer { get; set; }
-        public ILayer NextLayer { get; set; }
         public string FileName { get; set; }
 
         private Bitmap Image { get; set; }
 
-        public PixelValue GetPixelValue(int x, int y)
+        public override PixelValue GetPixelValue(int x, int y)
         {
             return this.Image.GetPixel(x, y);
         }
 
-        public void Initialize()
+        public override void Initialize()
         {
             this.Image = new Bitmap(this.FileName);
         }
 
-        public int GetWidth()
+        public override string GetName()
         {
-            throw new NotImplementedException();
+            return string.Format("{0}[File {1}]", this.GetPreviousLayerName(), this.FileName);
         }
 
-        public int GetHeigth()
+        public override int GetHeigth()
         {
-            throw new NotImplementedException();
+            return this.Image.Height;
         }
 
-        public void AddForLayer(ILayer layer)
+        public override int GetWidth()
         {
-            throw new NotImplementedException();
-        }
-
-        public void DeleteCurrentLayer()
-        {
-            throw new NotImplementedException();
-        }
-
-        public string GetName()
-        {
-            return string.Format("File {0}", this.FileName);
+            return this.Image.Width;
         }
     }
 }

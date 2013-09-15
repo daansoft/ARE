@@ -40,9 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseLayer.cs" />
     <Compile Include="CacheLayer.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="AddLayerMethod.cs" />
     <Compile Include="MixLayer.cs" />
     <Compile Include="EffectLayers\BWLayer.cs">
       <SubType>Code</SubType>
@@ -57,7 +59,7 @@
     <Compile Include="ILayer.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="LayerMixMethod.cs" />
+    <Compile Include="MixLayerMethod.cs" />
     <Compile Include="MaskLayer.cs" />
     <Compile Include="PixelValue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

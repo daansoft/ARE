@@ -6,26 +6,14 @@ using System.Threading.Tasks;
 
 namespace DaAn.AdvancedRawEditor.Layers
 {
-    public class CacheLayer : ILayer
+    public class CacheLayer : BaseLayer
     {
-        public ILayer PreviousLayer { get; set; }
-        public ILayer NextLayer { get; set; }
-
+        //TODO cache for width and height
         private PixelValue[][] CacheData;
 
-        public PixelValue GetPixelValue(int x, int y)
+        public override PixelValue GetPixelValue(int x, int y)
         {
             return this.CacheData[x][y];
-        }
-
-        public int GetWidth()
-        {
-            return this.PreviousLayer.GetWidth();
-        }
-
-        public int GetHeigth()
-        {
-            return this.PreviousLayer.GetHeigth();
         }
 
         public void RefreshCache()
@@ -39,7 +27,7 @@ namespace DaAn.AdvancedRawEditor.Layers
             }
         }
 
-        public void Initialize()
+        public override void Initialize()
         {
             this.CacheData = new PixelValue[this.PreviousLayer.GetWidth()][];
 
@@ -50,29 +38,9 @@ namespace DaAn.AdvancedRawEditor.Layers
             }
         }
 
-
-        public void AddForLayer(ILayer layer)
+        public override string GetName()
         {
-            this.PreviousLayer = layer;
-            this.NextLayer = layer.NextLayer;
-            layer.NextLayer = this;
-
-            /*this.PreviousLayer = layer.PreviousLayer;
-            this.CurrentLayer = layer;
-            this.NextLayer = layer.NextLayer;
-            layer.NextLayer.PreviousLayer = this;*/
-        }
-
-
-        public void DeleteCurrentLayer()
-        {
-            throw new NotImplementedException();
-        }
-
-
-        public string GetName()
-        {
-            return string.Format("Cache layer for {0}", this.PreviousLayer.GetName());
+            return string.Format("[Cache layer for {0}]", this.PreviousLayer.GetName());
         }
     }
 }

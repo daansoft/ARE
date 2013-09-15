@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace DaAn.AdvancedRawEditor.Layers
 {
-    public enum LayerMixMethod
+    public enum MixLayerMethod
     {
-        Normal
+        Normal = 0
     }
 }
