@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DaAn.AdvancedRawEditor.Layers.FileLayers
 {
-    public class JpgFileLayer : BaseLayer
+    public class JpgFileLayer : Layer
     {
         public string FileName { get; set; }
 

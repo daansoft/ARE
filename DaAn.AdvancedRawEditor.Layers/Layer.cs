@@ -6,14 +6,12 @@ using System.Threading.Tasks;
 
 namespace DaAn.AdvancedRawEditor.Layers
 {
-    public abstract class BaseLayer : ILayer
+    public abstract class Layer
     {
-        private static AddLayerMethod[] AllowedMethod = new AddLayerMethod[] { AddLayerMethod.AsNext };
+        private static AddLayerMethod[] AllowedMethod = new AddLayerMethod[] { AddLayerMethod.Next };
 
-        public ILayer PreviousLayer { get; set; }
-        public ILayer NextLayer { get; set; }
-
-        public abstract void Initialize();
+        public Layer PreviousLayer { get; set; }
+        public Layer NextLayer { get; set; }
 
         public virtual int GetWidth()
         {
@@ -35,15 +33,17 @@ namespace DaAn.AdvancedRawEditor.Layers
             return this.PreviousLayer.GetHeigth();
         }
 
-        public virtual void AddLayer(ILayer layer, AddLayerMethod method)
+        public virtual void Add(Layer layer, AddLayerMethod method)
         {
             switch (method)
             {
-                case AddLayerMethod.AsNext:
-                    this.AddNext(layer);
+                case AddLayerMethod.Next:
+                    layer.AddAfter(this);
+                    //this.AddNext(layer);
                     return;
-                case AddLayerMethod.IncludeCurrent:
-                    this.AddAndIncludeCurrent(layer);
+                case AddLayerMethod.Wrap:
+                    layer.Wrap(this);
+                    //this.AddAndIncludeCurrent(layer);
                     return;
                 case AddLayerMethod.Inside:
                     this.AddInside(layer);
@@ -61,34 +61,34 @@ namespace DaAn.AdvancedRawEditor.Layers
 
         public virtual AddLayerMethod[] GetAddLayerMethods()
         {
-            return BaseLayer.AllowedMethod;
+            return Layer.AllowedMethod;
         }
 
-        public abstract PixelValue GetPixelValue(int x, int y);
-        public abstract string GetName();
-
-        protected string GetPreviousLayerName()
+        protected virtual string GetPreviousLayerName()
         {
             return this.PreviousLayer == null ? string.Empty : string.Format("{0}\n", this.PreviousLayer.GetName());
         }
 
-        protected virtual void AddNext(ILayer layer)
+        public virtual void AddAfter(Layer layer)
         {
-            layer.PreviousLayer = this;
-            layer.NextLayer = this.NextLayer;
+            this.NextLayer = layer.NextLayer;
+            layer.NextLayer = this;
 
-            this.NextLayer.PreviousLayer = layer;
-            this.PreviousLayer.NextLayer = layer;
+            this.PreviousLayer = layer;
         }
 
-        protected virtual void AddAndIncludeCurrent(ILayer layer)
+        public virtual void Wrap(Layer layer)
         {
-            throw new Exception("Override AddAndIncludeCurrent");
+            throw new Exception("Override Wrap");
         }
 
-        protected virtual void AddInside(ILayer layer)
+        public virtual void AddInside(Layer layer)
         {
             throw new Exception("Override AddInside");
         }
+
+        public abstract PixelValue GetPixelValue(int x, int y);
+        public abstract string GetName();
+        public abstract void Initialize();
     }
 }

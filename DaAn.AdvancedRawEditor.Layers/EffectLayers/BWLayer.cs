@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DaAn.AdvancedRawEditor.Layers.EffectLayers
 {
-    public class BWLayer : BaseLayer
+    public class BWLayer : Layer
     {
         public  override PixelValue GetPixelValue(int x, int y)
         {

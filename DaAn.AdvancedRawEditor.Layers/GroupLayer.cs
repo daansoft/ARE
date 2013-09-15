@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace DaAn.AdvancedRawEditor.Layers
 {
-    public class GroupLayer : BaseLayer
+    public class GroupLayer : Layer
     {
-        private static AddLayerMethod[] AllowedMethod = new AddLayerMethod[] { AddLayerMethod.AsNext, AddLayerMethod.IncludeCurrent };
+        private static AddLayerMethod[] AllowedMethod = new AddLayerMethod[] { AddLayerMethod.Next, AddLayerMethod.Wrap };
 
-        private List<ILayer> Layers;
+        private CacheLayer CacheLayer;
+        private List<Layer> Layers;
 
         public override PixelValue GetPixelValue(int x, int y)
         {
@@ -21,7 +22,7 @@ namespace DaAn.AdvancedRawEditor.Layers
 
         public override void Initialize()
         {
-            this.Layers = new List<ILayer>();
+            this.Layers = new List<Layer>();
         }
 
         public override string GetName()
@@ -34,15 +35,23 @@ namespace DaAn.AdvancedRawEditor.Layers
             return GroupLayer.AllowedMethod;
         }
 
-        protected override void AddInside(ILayer layer)
+        public override void AddAfter(Layer layer)
         {
-            layer.PreviousLayer = this.PreviousLayer;
-            this.Layers.Add(layer);
+            this.CacheLayer = new CacheLayer();
+
+            this.CacheLayer.PreviousLayer = layer;
+
+            base.AddAfter(layer);
         }
 
-        protected override void AddAndIncludeCurrent(ILayer layer)
+        public override void AddInside(Layer layer)
         {
-            base.AddAndIncludeCurrent(layer);
+            
+        }
+
+        public override void Wrap(Layer layer)
+        {
+
         }
     }
 }

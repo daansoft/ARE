@@ -8,8 +8,8 @@ namespace DaAn.AdvancedRawEditor.Layers
 {
     public enum AddLayerMethod
     {
-        AsNext = 0,
-        IncludeCurrent = 1,
+        Next = 0,
+        Wrap = 1,
         Inside = 2
     }
 }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DaAn.AdvancedRawEditor.Layers
 {
-    public class MixLayer : BaseLayer
+    public class MixLayer : Layer
     {
-        public ILayer CurrentLayer { get; set; }
+        public Layer CurrentLayer { get; set; }
         public MixLayerMethod MixMethod { get; set; }
 
         public override PixelValue GetPixelValue(int x, int y)
@@ -35,6 +35,19 @@ namespace DaAn.AdvancedRawEditor.Layers
         public override string GetName()
         {
             return string.Format("{0}\n[Mix layer for {0}]", this.PreviousLayer.GetName(), this.CurrentLayer.GetName());
+        }
+
+        public override void AddInside(Layer layer)
+        {
+            layer.PreviousLayer = this.PreviousLayer;
+
+            this.CurrentLayer = layer;
+        }
+
+        public override void Wrap(Layer layer)
+        {
+            this.PreviousLayer = layer.PreviousLayer;
+            this.CurrentLayer = layer;
         }
     }
 }

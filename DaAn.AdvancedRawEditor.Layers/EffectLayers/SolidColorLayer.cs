@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DaAn.AdvancedRawEditor.Layers.EffectLayers
 {
-    public class SolidColorLayer : BaseLayer
+    public class SolidColorLayer : Layer
     {
         public PixelValue Color { get; set; }
 

@@ -40,11 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseLayer.cs" />
+    <Compile Include="Layer.cs" />
     <Compile Include="CacheLayer.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AddLayerMethod.cs" />
+    <Compile Include="GroupSubLayer.cs" />
     <Compile Include="MixLayer.cs" />
     <Compile Include="EffectLayers\BWLayer.cs">
       <SubType>Code</SubType>
@@ -54,9 +55,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="GroupLayer.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="ILayer.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="MixLayerMethod.cs" />

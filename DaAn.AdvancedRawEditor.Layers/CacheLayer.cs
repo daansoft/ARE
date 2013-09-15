@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DaAn.AdvancedRawEditor.Layers
 {
-    public class CacheLayer : BaseLayer
+    public class CacheLayer : Layer
     {
         //TODO cache for width and height
         private PixelValue[][] CacheData;
