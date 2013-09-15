@@ -34,13 +34,13 @@ namespace DaAn.AdvancedRawEditor.Layers
 
         public override string GetName()
         {
-            return string.Format("{0}\n[Mix layer for {0}]", this.PreviousLayer.GetName(), this.CurrentLayer.GetName());
+            return string.Format("[Mix layer for {0}]", this.CurrentLayer.GetName());
         }
 
         public override void AddInside(Layer layer)
         {
             layer.PreviousLayer = this.PreviousLayer;
-
+            layer.ParentLayer = this;
             this.CurrentLayer = layer;
         }
 
@@ -48,6 +48,7 @@ namespace DaAn.AdvancedRawEditor.Layers
         {
             this.PreviousLayer = layer.PreviousLayer;
             this.CurrentLayer = layer;
+            layer.ParentLayer = this;
         }
     }
 }

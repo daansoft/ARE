@@ -25,7 +25,7 @@ namespace DaAn.AdvancedRawEditor.Layers.FileLayers
 
         public override string GetName()
         {
-            return string.Format("{0}[File {1}]", this.GetPreviousLayerName(), this.FileName);
+            return string.Format("[File {0}]", this.FileName);
         }
 
         public override int GetHeigth()

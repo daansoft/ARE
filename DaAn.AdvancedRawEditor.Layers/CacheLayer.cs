@@ -40,7 +40,7 @@ namespace DaAn.AdvancedRawEditor.Layers
 
         public override string GetName()
         {
-            return string.Format("[Cache layer for {0}]", this.PreviousLayer.GetName());
+            return string.Format("[Cache layer for {0}]", this.GetPreviousLayerName());
         }
     }
 }

@@ -22,7 +22,7 @@ namespace DaAn.AdvancedRawEditor.Layers.EffectLayers
         
         public override string GetName()
         {
-            return string.Format("{0}\n[Solid color]", this.PreviousLayer.GetName());
+            return "[Solid color]";
         }
     }
 }

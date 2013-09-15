@@ -10,8 +10,9 @@ namespace DaAn.AdvancedRawEditor.Layers
     {
         private static AddLayerMethod[] AllowedMethod = new AddLayerMethod[] { AddLayerMethod.Next };
 
-        public Layer PreviousLayer { get; set; }
-        public Layer NextLayer { get; set; }
+        public virtual Layer ParentLayer { get; set; }
+        public virtual Layer PreviousLayer { get; set; }
+        public virtual Layer NextLayer { get; set; }
 
         public virtual int GetWidth()
         {
@@ -39,11 +40,9 @@ namespace DaAn.AdvancedRawEditor.Layers
             {
                 case AddLayerMethod.Next:
                     layer.AddAfter(this);
-                    //this.AddNext(layer);
                     return;
                 case AddLayerMethod.Wrap:
                     layer.Wrap(this);
-                    //this.AddAndIncludeCurrent(layer);
                     return;
                 case AddLayerMethod.Inside:
                     this.AddInside(layer);
@@ -53,10 +52,22 @@ namespace DaAn.AdvancedRawEditor.Layers
             }
         }
 
-        public virtual void DeleteCurrentLayer()
+        public virtual void Delete()
         {
-            this.NextLayer.PreviousLayer = this.PreviousLayer;
-            this.PreviousLayer.NextLayer = this.NextLayer;
+            if (this.ParentLayer == null)
+            {
+                this.NextLayer.PreviousLayer = this.PreviousLayer;
+                this.PreviousLayer.NextLayer = this.NextLayer;
+            }
+            else
+            {
+                this.ParentLayer.DeleteSubLayer(this);
+            }
+        }
+
+        protected virtual void DeleteSubLayer(Layer layer)
+        {
+            throw new NotImplementedException();
         }
 
         public virtual AddLayerMethod[] GetAddLayerMethods()

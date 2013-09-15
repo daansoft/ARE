@@ -13,6 +13,12 @@ namespace DaAn.AdvancedRawEditor.Layers
         private CacheLayer CacheLayer;
         private List<Layer> Layers;
 
+        public GroupLayer()
+        {
+
+            this.Layers = new List<Layer>();
+        }
+
         public override PixelValue GetPixelValue(int x, int y)
         {
             var parentValue = this.PreviousLayer.GetPixelValue(x, y);
@@ -46,12 +52,19 @@ namespace DaAn.AdvancedRawEditor.Layers
 
         public override void AddInside(Layer layer)
         {
-            
+            layer.PreviousLayer = this.CacheLayer;
+            layer.ParentLayer = this;
+
+            this.Layers.Add(layer);
         }
 
         public override void Wrap(Layer layer)
         {
 
+        }
+
+        protected override void DeleteSubLayer(Layer layer)
+        {
         }
     }
 }

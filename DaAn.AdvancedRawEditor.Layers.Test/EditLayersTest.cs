@@ -37,6 +37,8 @@ namespace DaAn.AdvancedRawEditor.Layers.Test
 
             mask2.Add(bw2, AddLayerMethod.Inside);
 
+            var name = mask.GetName();
+
         }
 
         /*[TestMethod]

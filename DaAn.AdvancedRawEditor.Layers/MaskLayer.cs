@@ -40,13 +40,13 @@ namespace DaAn.AdvancedRawEditor.Layers
         
         public override string GetName()
         {
-            return string.Format("Mask layer for {0}", this.CurrentLayer.GetName());
+            return string.Format("{0}[Mask layer for {1}]", this.GetPreviousLayerName(), this.CurrentLayer.GetName());
         }
 
         public override void AddInside(Layer layer)
         {
             layer.PreviousLayer = this.PreviousLayer;
-
+            layer.ParentLayer = this;
             this.CurrentLayer = layer;
         }
 
@@ -54,6 +54,7 @@ namespace DaAn.AdvancedRawEditor.Layers
         {
             this.PreviousLayer = layer.PreviousLayer;
             this.CurrentLayer = layer;
+            layer.ParentLayer = this;
         }
     }
 }

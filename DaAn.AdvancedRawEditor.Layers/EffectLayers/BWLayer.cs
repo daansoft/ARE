@@ -24,7 +24,7 @@ namespace DaAn.AdvancedRawEditor.Layers.EffectLayers
 
         public override string GetName()
         {
-            return string.Format("{0}\n[Black & White]", this.PreviousLayer.GetName());
+            return "[Black & White]";
         }
     }
 }
