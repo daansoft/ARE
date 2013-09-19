@@ -34,24 +34,6 @@ namespace DaAn.AdvancedRawEditor.Layers
             return this.PreviousLayer.GetHeigth();
         }
 
-        public virtual void Add(Layer layer, AddLayerMethod method)
-        {
-            switch (method)
-            {
-                case AddLayerMethod.Next:
-                    layer.AddAfter(this);
-                    return;
-                case AddLayerMethod.Wrap:
-                    layer.Wrap(this);
-                    return;
-                case AddLayerMethod.Inside:
-                    this.AddInside(layer);
-                    return;
-                default:
-                    throw new Exception("Unknown AddLayerMethod");
-            }
-        }
-
         public virtual void Delete()
         {
             if (this.ParentLayer == null)
@@ -88,12 +70,12 @@ namespace DaAn.AdvancedRawEditor.Layers
             this.PreviousLayer = layer;
         }
 
-        public virtual void Wrap(Layer layer)
+        public virtual void Wrap(Layer beginLayer, Layer endLayer)
         {
             throw new Exception("Override Wrap");
         }
 
-        public virtual void AddInside(Layer layer)
+        public virtual void AddInside(Layer beginLayer, Layer endLayer)
         {
             throw new Exception("Override AddInside");
         }

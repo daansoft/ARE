@@ -50,17 +50,16 @@ namespace DaAn.AdvancedRawEditor.Layers
             base.AddAfter(layer);
         }
 
-        public override void AddInside(Layer layer)
+        public override void AddInside(Layer beginLayer, Layer endLayer)
         {
-            layer.PreviousLayer = this.CacheLayer;
-            layer.ParentLayer = this;
+            beginLayer.PreviousLayer = this.CacheLayer;
+            beginLayer.ParentLayer = this;
 
-            this.Layers.Add(layer);
+            this.Layers.Add(endLayer);
         }
 
-        public override void Wrap(Layer layer)
+        public override void Wrap(Layer beginLayer, Layer endLayer)
         {
-
         }
 
         protected override void DeleteSubLayer(Layer layer)

@@ -37,18 +37,18 @@ namespace DaAn.AdvancedRawEditor.Layers
             return string.Format("[Mix layer for {0}]", this.CurrentLayer.GetName());
         }
 
-        public override void AddInside(Layer layer)
+        public override void AddInside(Layer beginLayer, Layer endLayer)
         {
-            layer.PreviousLayer = this.PreviousLayer;
-            layer.ParentLayer = this;
-            this.CurrentLayer = layer;
+            beginLayer.PreviousLayer = this.PreviousLayer;
+            beginLayer.ParentLayer = this;
+            this.CurrentLayer = endLayer;
         }
 
-        public override void Wrap(Layer layer)
+        public override void Wrap(Layer beginLayer, Layer endLayer)
         {
-            this.PreviousLayer = layer.PreviousLayer;
-            this.CurrentLayer = layer;
-            layer.ParentLayer = this;
+            this.PreviousLayer = beginLayer.PreviousLayer;
+            this.CurrentLayer = endLayer;
+            beginLayer.ParentLayer = this;
         }
     }
 }

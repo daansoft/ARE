@@ -15,7 +15,7 @@ namespace DaAn.AdvancedRawEditor.Layers.Test
 
             Layer bw = new BWLayer();
 
-            start.Add(bw, AddLayerMethod.Next);
+            /*start.Add(bw, AddLayerMethod.Next);
 
             Layer group1 = new GroupLayer();
 
@@ -37,7 +37,7 @@ namespace DaAn.AdvancedRawEditor.Layers.Test
 
             mask2.Add(bw2, AddLayerMethod.Inside);
 
-            var name = mask.GetName();
+            var name = mask.GetName();*/
 
         }
 
