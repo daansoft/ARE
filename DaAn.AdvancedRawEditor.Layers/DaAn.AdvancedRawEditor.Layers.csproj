@@ -40,11 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddLayerMethod.cs" />
     <Compile Include="Layer.cs" />
     <Compile Include="CacheLayer.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="AddLayerMethod.cs" />
     <Compile Include="GroupSubLayer.cs" />
     <Compile Include="MixLayer.cs" />
     <Compile Include="EffectLayers\BWLayer.cs">

@@ -14,30 +14,27 @@ namespace DaAn.AdvancedRawEditor.Layers.Test
             Layer start = new JpgFileLayer();
 
             Layer bw = new BWLayer();
-
-            /*start.Add(bw, AddLayerMethod.Next);
+            bw.After(start);
 
             Layer group1 = new GroupLayer();
-
-            bw.Add(group1, AddLayerMethod.Next);
+            group1.Wrap(bw, bw);
 
             Layer solid = new SolidColorLayer();
-
-            group1.Add(solid, AddLayerMethod.Inside);
+            group1.Add(solid, solid);
 
             Layer mask = new MaskLayer();
 
-            solid.Add(mask, AddLayerMethod.Wrap);
+            mask.Wrap(solid, solid);
 
             Layer mask2 = new MaskLayer();
 
-            mask.Add(mask2, AddLayerMethod.Next);
+            mask2.Add(mask, mask);
 
             Layer bw2 = new BWLayer();
 
-            mask2.Add(bw2, AddLayerMethod.Inside);
+            mask2.Add(bw2, bw2);
 
-            var name = mask.GetName();*/
+            var name = mask.GetName();
 
         }
 

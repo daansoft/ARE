@@ -43,7 +43,7 @@ namespace DaAn.AdvancedRawEditor.Layers
             return string.Format("{0}[Mask layer for {1}]", this.GetPreviousLayerName(), this.CurrentLayer.GetName());
         }
 
-        public override void AddInside(Layer beginLayer, Layer endLayer)
+        public override void Add(Layer beginLayer, Layer endLayer)
         {
             beginLayer.PreviousLayer = this.PreviousLayer;
             beginLayer.ParentLayer = this;

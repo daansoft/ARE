@@ -62,11 +62,15 @@ namespace DaAn.AdvancedRawEditor.Layers
             return this.PreviousLayer == null ? string.Empty : string.Format("{0}\n", this.PreviousLayer.GetName());
         }
 
-        public virtual void AddAfter(Layer layer)
+        public virtual void After(Layer layer)
         {
             this.NextLayer = layer.NextLayer;
-            layer.NextLayer = this;
+            if (layer.NextLayer != null)
+            {
+                layer.NextLayer.PreviousLayer = this;
+            }
 
+            layer.NextLayer = this;
             this.PreviousLayer = layer;
         }
 
@@ -75,7 +79,7 @@ namespace DaAn.AdvancedRawEditor.Layers
             throw new Exception("Override Wrap");
         }
 
-        public virtual void AddInside(Layer beginLayer, Layer endLayer)
+        public virtual void Add(Layer beginLayer, Layer endLayer)
         {
             throw new Exception("Override AddInside");
         }

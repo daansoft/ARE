@@ -37,7 +37,7 @@ namespace DaAn.AdvancedRawEditor.Layers
             return string.Format("[Mix layer for {0}]", this.CurrentLayer.GetName());
         }
 
-        public override void AddInside(Layer beginLayer, Layer endLayer)
+        public override void Add(Layer beginLayer, Layer endLayer)
         {
             beginLayer.PreviousLayer = this.PreviousLayer;
             beginLayer.ParentLayer = this;
