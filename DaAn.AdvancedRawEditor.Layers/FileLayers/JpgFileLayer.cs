@@ -13,14 +13,14 @@ namespace DaAn.AdvancedRawEditor.Layers.FileLayers
 
         private Bitmap Image { get; set; }
 
+        public JpgFileLayer()
+        {
+            this.Image = new Bitmap(this.FileName);
+        }
+
         public override PixelValue GetPixelValue(int x, int y)
         {
             return this.Image.GetPixel(x, y);
-        }
-
-        public override void Initialize()
-        {
-            this.Image = new Bitmap(this.FileName);
         }
 
         public override string GetName()

@@ -32,15 +32,10 @@ namespace DaAn.AdvancedRawEditor.Layers
 
             return maskedInputValue + maskedOutputValue;
         }
-
-        public override void Initialize()
-        {
-            // TODO initialise mask
-        }
         
         public override string GetName()
         {
-            return string.Format("{0}[Mask layer for {1}]", this.GetPreviousLayerName(), this.CurrentLayer.GetName());
+            return string.Format("[Mask layer for:\n{0}]", this.CurrentLayer.GetName());
         }
 
         public override void Add(Layer beginLayer, Layer endLayer)

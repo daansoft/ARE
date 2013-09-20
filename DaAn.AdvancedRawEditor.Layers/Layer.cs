@@ -59,7 +59,7 @@ namespace DaAn.AdvancedRawEditor.Layers
 
         protected virtual string GetPreviousLayerName()
         {
-            return this.PreviousLayer == null ? string.Empty : string.Format("{0}\n", this.PreviousLayer.GetName());
+            return this.PreviousLayer == null ? string.Empty : this.PreviousLayer.GetName();
         }
 
         public virtual void After(Layer layer)
@@ -86,6 +86,5 @@ namespace DaAn.AdvancedRawEditor.Layers
 
         public abstract PixelValue GetPixelValue(int x, int y);
         public abstract string GetName();
-        public abstract void Initialize();
     }
 }

@@ -27,7 +27,7 @@ namespace DaAn.AdvancedRawEditor.Layers
             }
         }
 
-        public override void Initialize()
+        public void Initialize()
         {
             this.CacheData = new PixelValue[this.PreviousLayer.GetWidth()][];
 
@@ -40,7 +40,7 @@ namespace DaAn.AdvancedRawEditor.Layers
 
         public override string GetName()
         {
-            return string.Format("[Cache layer for {0}]", this.GetPreviousLayerName());
+            return "[Cache layer]";
         }
     }
 }

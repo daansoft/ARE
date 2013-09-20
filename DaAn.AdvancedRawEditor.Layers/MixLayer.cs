@@ -11,6 +11,11 @@ namespace DaAn.AdvancedRawEditor.Layers
         public Layer CurrentLayer { get; set; }
         public MixLayerMethod MixMethod { get; set; }
 
+        public MixLayer()
+        {
+            this.MixMethod = MixLayerMethod.Normal;
+        }
+
         public override PixelValue GetPixelValue(int x, int y)
         {
             switch (this.MixMethod)
@@ -27,14 +32,9 @@ namespace DaAn.AdvancedRawEditor.Layers
             return this.PreviousLayer.GetPixelValue(x, y) + this.CurrentLayer.GetPixelValue(x, y);
         }
 
-        public override void Initialize()
-        {
-            this.MixMethod = MixLayerMethod.Normal;
-        }
-
         public override string GetName()
         {
-            return string.Format("[Mix layer for {0}]", this.CurrentLayer.GetName());
+            return string.Format("[Mix layer for:\n{0}]", this.CurrentLayer.GetName());
         }
 
         public override void Add(Layer beginLayer, Layer endLayer)

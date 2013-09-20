@@ -14,11 +14,6 @@ namespace DaAn.AdvancedRawEditor.Layers.EffectLayers
         {
             return this.Color;
         }
-
-        public override void Initialize()
-        {
-            throw new NotImplementedException();
-        }
         
         public override string GetName()
         {

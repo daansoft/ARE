@@ -17,11 +17,6 @@ namespace DaAn.AdvancedRawEditor.Layers.EffectLayers
             return bw;
         }
 
-        public override void Initialize()
-        {
-            throw new NotImplementedException();
-        }
-
         public override string GetName()
         {
             return "[Black & White]";

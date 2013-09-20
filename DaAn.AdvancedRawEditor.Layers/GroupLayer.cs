@@ -25,14 +25,9 @@ namespace DaAn.AdvancedRawEditor.Layers
             throw new NotImplementedException();
         }
 
-        public override void Initialize()
-        {
-            this.Layers = new List<Layer>();
-        }
-
         public override string GetName()
         {
-            return string.Format("[Group layer for {0}]", string.Join(", ", this.Layers.Select(r => r.GetName())));
+            return string.Format("[Group layer for:\n{0}]", string.Join(", ", this.Layers.Select(r => r.GetName())));
         }
 
         public override AddLayerMethod[] GetAddLayerMethods()
