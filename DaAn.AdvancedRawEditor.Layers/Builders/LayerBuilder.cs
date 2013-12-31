@@ -4,35 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DaAn.AdvancedRawEditor.Layers
+namespace DaAn.AdvancedRawEditor.Layers.Builders
 {
-    public abstract class Layer
+    public class LayerBuilder
     {
-        private static AddLayerMethod[] AllowedMethod = new AddLayerMethod[] { AddLayerMethod.Next };
 
-        public virtual Layer ParentLayer { get; set; }
-        public virtual Layer PreviousLayer { get; set; }
-        public virtual Layer NextLayer { get; set; }
-
-        public virtual int GetWidth()
-        {
-            if (this.PreviousLayer == null)
-            {
-                throw new Exception("Override GetWidth");
-            }
-
-            return this.PreviousLayer.GetWidth();
-        }
-
-        public virtual int GetHeigth()
-        {
-            if (this.PreviousLayer == null)
-            {
-                throw new Exception("Override GetHeigth");
-            }
-
-            return this.PreviousLayer.GetHeigth();
-        }
+        /*private static AddLayerMethod[] AllowedMethod = new AddLayerMethod[] { AddLayerMethod.Next };
 
         public virtual void Delete()
         {
@@ -57,10 +34,7 @@ namespace DaAn.AdvancedRawEditor.Layers
             return Layer.AllowedMethod;
         }
 
-        protected virtual string GetPreviousLayerName()
-        {
-            return this.PreviousLayer == null ? string.Empty : this.PreviousLayer.GetName();
-        }
+
 
         public virtual void After(Layer layer)
         {
@@ -82,9 +56,7 @@ namespace DaAn.AdvancedRawEditor.Layers
         public virtual void Add(Layer beginLayer, Layer endLayer)
         {
             throw new Exception("Override AddInside");
-        }
+        }*/
 
-        public abstract PixelValue GetPixelValue(int x, int y);
-        public abstract string GetName();
     }
 }

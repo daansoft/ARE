@@ -8,18 +8,10 @@ namespace DaAn.AdvancedRawEditor.Layers
 {
     public interface ILayer
     {
-        int GetWidth();
-        int GetHeigth();
-
-        void Delete();
-        void DeleteSubLayer(Layer layer);
-
-        AddLayerMethod[] GetAddLayerMethods();
-        void After(Layer layer);
-        void Wrap(Layer beginLayer, Layer endLayer);
-        void Add(Layer beginLayer, Layer endLayer);
+        int Width { get; }
+        int Height { get; }
+        string Name { get; set; }
 
         PixelValue GetPixelValue(int x, int y);
-        string GetName();
     }
 }

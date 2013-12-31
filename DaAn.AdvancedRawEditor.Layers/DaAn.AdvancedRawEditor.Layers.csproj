@@ -40,14 +40,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddLayerMethod.cs" />
+    <Compile Include="Builders\LayerBuilder.cs" />
+    <Compile Include="MixLayerMethods\AddMixLayerMethod.cs" />
+    <Compile Include="MixLayerMethods\AvarageMixLayerMethod.cs" />
+    <Compile Include="MixLayerMethods\MultipleMixLayerMethod.cs" />
+    <Compile Include="RenderLayer.cs" />
+    <Compile Include="IMixLayerMethod.cs" />
+    <Compile Include="MixLayerMethods\NormalMixLayerMethod.cs" />
+    <Compile Include="MaskLayer.cs" />
+    <Compile Include="MixLayer.cs" />
+    <Compile Include="SamplingLayer.cs" />
+    <Compile Include="Tools.cs" />
+    <Compile Include="TwoInputLayer.cs" />
+    <Compile Include="OneInputLayer.cs" />
     <Compile Include="ILayer.cs" />
-    <Compile Include="Layer.cs" />
     <Compile Include="CacheLayer.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="GroupSubLayer.cs" />
-    <Compile Include="MixLayer.cs" />
     <Compile Include="EffectLayers\BWLayer.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -55,17 +64,10 @@
     <Compile Include="FileLayers\JpgFileLayer.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="GroupLayer.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="MixLayerMethod.cs" />
-    <Compile Include="MaskLayer.cs" />
     <Compile Include="PixelValue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="LayerMixes\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Documents\Articles.txt" />
   </ItemGroup>

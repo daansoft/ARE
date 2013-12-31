@@ -34,14 +34,26 @@ namespace DaAn.AdvancedRawEditor.Layers
 
         public PixelValue(double r, double g, double b)
         {
-            this.R = r > Max ? Max : (r < Min ? Min : r);
-            this.G = g > Max ? Max : (g < Min ? Min : g);
-            this.B = b > Max ? Max : (b < Min ? Min : b);
+            this.R = r;
+            this.G = g;
+            this.B = b;
         }
 
         public PixelValue Clone()
         {
             return new PixelValue(this.R, this.G, this.B);
+        }
+
+        public void Clip()
+        {
+            this.R = PixelValue.Cilp(this.R);
+            this.G = PixelValue.Cilp(this.G);
+            this.B = PixelValue.Cilp(this.B);
+        }
+
+        private static double Cilp(double value)
+        {
+            return value > PixelValue.Max ? PixelValue.Max : value < PixelValue.Min ? PixelValue.Min : value;
         }
 
         public static implicit operator PixelValue(double v)  // explicit byte to digit conversion operator

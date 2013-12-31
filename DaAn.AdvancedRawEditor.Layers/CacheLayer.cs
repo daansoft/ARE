@@ -6,41 +6,32 @@ using System.Threading.Tasks;
 
 namespace DaAn.AdvancedRawEditor.Layers
 {
-    public class CacheLayer : Layer
+    public class CacheLayer : OneInputLayer
     {
-        //TODO cache for width and height
-        private PixelValue[][] CacheData;
+        private int cachedWidth;
+        private int cachedHeight;
+
+        private PixelValue[] cachedData;
 
         public override PixelValue GetPixelValue(int x, int y)
         {
-            return this.CacheData[x][y];
+            return this.cachedData[y * this.cachedWidth + x];
         }
 
         public void RefreshCache()
         {
-            for (int x = 0; x < this.PreviousLayer.GetWidth(); x++)
+            for (int i = 0; i < this.cachedData.Length; i++)
             {
-                for (int y = 0; y < this.PreviousLayer.GetHeigth(); y++)
-                {
-                    this.CacheData[x][y] = this.PreviousLayer.GetPixelValue(x, y);
-                }
+                this.cachedData[i] = this.InputLayer.GetPixelValue(i % this.cachedWidth, i / this.cachedWidth);
             }
         }
 
         public void Initialize()
         {
-            this.CacheData = new PixelValue[this.PreviousLayer.GetWidth()][];
+            this.cachedWidth = this.InputLayer.Width;
+            this.cachedHeight = this.InputLayer.Height;
 
-            var height = this.PreviousLayer.GetHeigth();
-            for (int i = 0; i < this.PreviousLayer.GetWidth(); i++)
-            {
-                this.CacheData[i] = new PixelValue[height];
-            }
-        }
-
-        public override string GetName()
-        {
-            return "[Cache layer]";
+            this.cachedData = new PixelValue[this.cachedWidth * this.cachedHeight];
         }
     }
 }

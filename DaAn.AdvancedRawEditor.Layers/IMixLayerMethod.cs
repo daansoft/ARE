@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace DaAn.AdvancedRawEditor.Layers
 {
-    public enum MixLayerMethod
+    public interface IMixLayerMethod
     {
-        Normal = 0
+        PixelValue MixValue(PixelValue firstValue, PixelValue secondValue);
+        string Name { get; }
     }
 }
