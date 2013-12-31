@@ -10,9 +10,9 @@ namespace DaAn.AdvancedRawEditor.Layers
     {
         public IMixLayerMethod MixMethod { get; set; }
         
-        public override PixelValue GetPixelValue(int x, int y)
+        public override PixelValue GetPixelColor(int x, int y)
         {
-            return this.MixMethod.MixValue(this.FirstInputLayer.GetPixelValue(x, y), this.SecondInputLayer.GetPixelValue(x, y));
+            return this.MixMethod.MixValue(this.FirstInputLayer.GetPixelColor(x, y), this.SecondInputLayer.GetPixelColor(x, y));
         }
     }
 }

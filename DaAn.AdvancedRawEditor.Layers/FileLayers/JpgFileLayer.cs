@@ -38,7 +38,7 @@ namespace DaAn.AdvancedRawEditor.Layers.FileLayers
             set;
         }
 
-        public PixelValue GetPixelValue(int x, int y)
+        public PixelValue GetPixelColor(int x, int y)
         {
             return this.bitmap.GetPixel(x, y);
         }

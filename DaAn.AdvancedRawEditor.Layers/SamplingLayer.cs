@@ -33,9 +33,9 @@ namespace DaAn.AdvancedRawEditor.Layers
             }
         }
 
-        public override PixelValue GetPixelValue(int x, int y)
+        public override PixelValue GetPixelColor(int x, int y)
         {
-            return this.InputLayer.GetPixelValue((int)(x * invertSampling), (int)(y * invertSampling));
+            return this.InputLayer.GetPixelColor((int)(x * invertSampling), (int)(y * invertSampling));
         }
     }
 }

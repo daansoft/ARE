@@ -8,13 +8,11 @@ namespace DaAn.AdvancedRawEditor.Layers.EffectLayers
 {
     public class BWLayer : OneInputLayer
     {
-        public override PixelValue GetPixelValue(int x, int y)
+        public override PixelValue GetPixelColor(int x, int y)
         {
-            var previousValue = this.InputLayer.GetPixelValue(x, y);
+            var previousValue = this.InputLayer.GetPixelColor(x, y);
 
-            var bw = (previousValue.R + previousValue.G + previousValue.B) / 3.0;
-
-            return bw;
+            return (previousValue.R + previousValue.G + previousValue.B) / 3.0;
         }
     }
 }

@@ -16,7 +16,7 @@ namespace DaAn.AdvancedRawEditor.Layers
             this.layer = layer;
         }
 
-        public void Render(Graphics graphics)
+        public Bitmap GetImage()
         {
             Bitmap image = new Bitmap(this.layer.Width, this.layer.Height);
 
@@ -27,17 +27,16 @@ namespace DaAn.AdvancedRawEditor.Layers
                     image.SetPixel(i, j, this.GetColor(i, j));
                 }
             }
-
-            graphics.DrawImage(image, 0, 0);
+            return image;
         }
 
         private Color GetColor(int i, int j)
         {
-            PixelValue pixel = this.layer.GetPixelValue(i, j);
+            PixelValue pixel = this.layer.GetPixelColor(i, j);
 
             pixel.Clip();
 
-            return Color.FromArgb((byte)pixel.R, (byte)pixel.G, (byte)pixel.B);
+            return Color.FromArgb((byte)Math.Round(pixel.R, MidpointRounding.ToEven), (byte)Math.Round(pixel.G, MidpointRounding.ToEven), (byte)Math.Round(pixel.B, MidpointRounding.ToEven));
         }
     }
 }

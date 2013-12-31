@@ -12,6 +12,6 @@ namespace DaAn.AdvancedRawEditor.Layers
         int Height { get; }
         string Name { get; set; }
 
-        PixelValue GetPixelValue(int x, int y);
+        PixelValue GetPixelColor(int x, int y);
     }
 }

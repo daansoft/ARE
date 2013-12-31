@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Builders\LayerBuilder.cs" />
+    <Compile Include="EffectLayers\BrightnessLayer.cs" />
     <Compile Include="MixLayerMethods\AddMixLayerMethod.cs" />
     <Compile Include="MixLayerMethods\AvarageMixLayerMethod.cs" />
     <Compile Include="MixLayerMethods\MultipleMixLayerMethod.cs" />

@@ -10,7 +10,7 @@ namespace DaAn.AdvancedRawEditor.Layers
     {
         public double[][] Mask { get; set; }
 
-        public override PixelValue GetPixelValue(int x, int y)
+        public override PixelValue GetPixelColor(int x, int y)
         {
             PixelValue maskedInputValue = PixelValue.White;
             PixelValue maskedOutputValue = PixelValue.Black;
@@ -21,12 +21,12 @@ namespace DaAn.AdvancedRawEditor.Layers
 
             if (maskValue < 1.0)
             {
-                maskedInputValue = this.FirstInputLayer.GetPixelValue(x, y) * (1 - maskValue);
+                maskedInputValue = this.FirstInputLayer.GetPixelColor(x, y) * (1 - maskValue);
             }
 
             if (maskValue > 0.0)
             {
-                maskedOutputValue = this.SecondInputLayer.GetPixelValue(x, y) * maskValue;
+                maskedOutputValue = this.SecondInputLayer.GetPixelColor(x, y) * maskValue;
             }
 
             return maskedInputValue + maskedOutputValue;

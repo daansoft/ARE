@@ -8,7 +8,7 @@ namespace DaAn.AdvancedRawEditor
 {
     public partial class Form1 : Form
     {
-        RenderLayer renderLayer;
+        ILayer file;
 
         public Form1()
         {
@@ -17,16 +17,16 @@ namespace DaAn.AdvancedRawEditor
             ILayer jpgFileLayer = new JpgFileLayer("../../test.jpg");
 
             SamplingLayer samplingLayer = new SamplingLayer(1);
-
             samplingLayer.InputLayer = jpgFileLayer;
 
             CacheLayer cacheLayer = new CacheLayer();
-
             cacheLayer.InputLayer = samplingLayer;
             cacheLayer.Initialize();
             cacheLayer.RefreshCache();
 
-            BWLayer bwLayer = new BWLayer();
+            file = cacheLayer;
+
+            /*BWLayer bwLayer = new BWLayer();
 
             bwLayer.InputLayer = cacheLayer;
 
@@ -36,12 +36,47 @@ namespace DaAn.AdvancedRawEditor
             mixLayer.FirstInputLayer = bwLayer;
             mixLayer.SecondInputLayer = cacheLayer;
 
-            this.renderLayer = new RenderLayer(mixLayer);
+            MixLayer mixLayer2 = new MixLayer();
+
+            mixLayer2.MixMethod = new AvarageMixLayerMethod();
+            mixLayer2.FirstInputLayer = mixLayer;
+            mixLayer2.SecondInputLayer = new BrightnessLayer(1.2) { InputLayer = cacheLayer };
+
+            BrightnessLayer brightnessLayer = new BrightnessLayer(0.9) { InputLayer = bwLayer };
+
+            CacheLayer cacheLayer2 = new CacheLayer();
+
+            cacheLayer2.InputLayer = brightnessLayer;
+            cacheLayer2.Initialize();
+            cacheLayer2.RefreshCache();
+
+            this.renderLayer = new RenderLayer(cacheLayer2);
+
+            this.renderLayer.GetImage().Save("testttt.jpg");*/
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-            this.renderLayer.Render(e.Graphics);
+            //this.renderLayer.Render(e.Graphics);
+        }
+
+        private void button1_Click(object sender, System.EventArgs e)
+        {
+            SamplingLayer samplingLayer = new SamplingLayer(0.5);
+
+            samplingLayer.InputLayer = this.file;
+
+            BWLayer bwLayer = new BWLayer();
+
+            bwLayer.InputLayer = samplingLayer;
+
+            BrightnessLayer brightnessLayer = new BrightnessLayer(0.9);
+
+            brightnessLayer.InputLayer = bwLayer;
+
+            RenderLayer renderLayer = new RenderLayer(brightnessLayer);
+
+            renderLayer.GetImage().Save("testttt.jpg");
         }
     }
 }

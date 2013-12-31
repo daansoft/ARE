@@ -36,6 +36,6 @@ namespace DaAn.AdvancedRawEditor.Layers
             set;
         }
 
-        public abstract PixelValue GetPixelValue(int x, int y);
+        public abstract PixelValue GetPixelColor(int x, int y);
     }
 }

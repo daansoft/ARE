@@ -16,7 +16,7 @@ namespace DaAn.AdvancedRawEditor.Layers.Test
             Assert.AreEqual(2280, jpgFileLayer.Width);
             Assert.AreEqual(1520, jpgFileLayer.Height);
 
-            Assert.IsNotNull(jpgFileLayer.GetPixelValue(100, 100));
+            Assert.IsNotNull(jpgFileLayer.GetPixelColor(100, 100));
         }
 
         [TestMethod]
@@ -28,7 +28,7 @@ namespace DaAn.AdvancedRawEditor.Layers.Test
 
             bwLayer.InputLayer = jpgFileLayer;
 
-            var actual = bwLayer.GetPixelValue(610, 600);
+            var actual = bwLayer.GetPixelColor(610, 600);
 
             Assert.AreEqual(23, actual.R);
             Assert.AreEqual(23, actual.G);
@@ -47,7 +47,7 @@ namespace DaAn.AdvancedRawEditor.Layers.Test
             cacheLayer.Initialize();
             cacheLayer.RefreshCache();
 
-            var actual = cacheLayer.GetPixelValue(2279, 1519);
+            var actual = cacheLayer.GetPixelColor(2279, 1519);
 
             Assert.AreEqual(47, actual.R);
             Assert.AreEqual(47, actual.G);

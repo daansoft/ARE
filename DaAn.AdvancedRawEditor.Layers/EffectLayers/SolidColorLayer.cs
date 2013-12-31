@@ -10,7 +10,7 @@ namespace DaAn.AdvancedRawEditor.Layers.EffectLayers
     {
         public PixelValue Color { get; set; }
 
-        public override PixelValue GetPixelValue(int x, int y)
+        public override PixelValue GetPixelColor(int x, int y)
         {
             return this.Color;
         }
