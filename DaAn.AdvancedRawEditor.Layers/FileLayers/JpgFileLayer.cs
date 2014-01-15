@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DaAn.AdvancedRawEditor.Layers.Abstracts;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -7,16 +8,17 @@ using System.Threading.Tasks;
 
 namespace DaAn.AdvancedRawEditor.Layers.FileLayers
 {
-    public class JpgFileLayer : ILayer
+    public class JpgFileLayer : Layer, IInputLayer
     {
         public Bitmap bitmap;
 
-        public JpgFileLayer(string fileName)
+        public JpgFileLayer(Guid identificator, string fileName) :
+            base(identificator, 0)
         {
-            this.bitmap = new Bitmap(fileName);
+            this.SetInputData(fileName);
         }
 
-        public int Width
+        public override int Width
         {
             get
             {
@@ -24,7 +26,7 @@ namespace DaAn.AdvancedRawEditor.Layers.FileLayers
             }
         }
 
-        public int Height
+        public override int Height
         {
             get
             {
@@ -32,15 +34,19 @@ namespace DaAn.AdvancedRawEditor.Layers.FileLayers
             }
         }
 
-        public string Name
+        public override IConnectionBuilder GetConnectionBuilder()
         {
-            get;
-            set;
+            return new EmptyConnectionBuilder();
         }
 
-        public PixelValue GetPixelColor(int x, int y)
+        public override PixelColor GetPixelColor(int x, int y)
         {
             return this.bitmap.GetPixel(x, y);
+        }
+
+        public void SetInputData(string fileName)
+        {
+            this.bitmap = new Bitmap(fileName);
         }
     }
 }

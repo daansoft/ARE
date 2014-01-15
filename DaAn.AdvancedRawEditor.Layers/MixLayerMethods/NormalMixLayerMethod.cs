@@ -8,7 +8,7 @@ namespace DaAn.AdvancedRawEditor.Layers.MixLayerMethods
 {
     public class NormalMixLayerMethod : IMixLayerMethod
     {
-        public PixelValue MixValue(PixelValue firstValue, PixelValue secondValue)
+        public PixelColor MixValue(PixelColor firstValue, PixelColor secondValue)
         {
             return secondValue;
         }

@@ -13,7 +13,7 @@ namespace DaAn.AdvancedRawEditor.Controls
 {
     public partial class LayerControl : UserControl
     {
-        private ILayer layer;
+        private Layer layer;
 
         public LayerControl()
         {

@@ -8,9 +8,11 @@ namespace DaAn.AdvancedRawEditor.Layers.MixLayerMethods
 {
     public class AvarageMixLayerMethod : IMixLayerMethod
     {
-        public PixelValue MixValue(PixelValue firstValue, PixelValue secondValue)
+        public PixelColor MixValue(PixelColor firstValue, PixelColor secondValue)
         {
-            return (firstValue + secondValue) * 0.5;
+            return PixelColor.FromNormalizedRGB((firstValue.RN + secondValue.RN) * 0.5,
+                (firstValue.GN + secondValue.GN) * 0.5,
+                (firstValue.BN + secondValue.BN) * 0.5);
         }
 
         public string Name

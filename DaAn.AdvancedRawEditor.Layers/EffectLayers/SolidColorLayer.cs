@@ -6,11 +6,17 @@ using System.Threading.Tasks;
 
 namespace DaAn.AdvancedRawEditor.Layers.EffectLayers
 {
-    public class SolidColorLayer : OneInputLayer
+    public class SolidColorLayer : Layer
     {
-        public PixelValue Color { get; set; }
+        public SolidColorLayer(Guid identificator)
+            : base(identificator, 1)
+        {
 
-        public override PixelValue GetPixelColor(int x, int y)
+        }
+
+        public PixelColor Color { get; set; }
+
+        public override PixelColor GetPixelColor(int x, int y)
         {
             return this.Color;
         }

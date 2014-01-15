@@ -8,7 +8,7 @@ namespace DaAn.AdvancedRawEditor.Layers
 {
     public interface IMixLayerMethod
     {
-        PixelValue MixValue(PixelValue firstValue, PixelValue secondValue);
+        PixelColor MixValue(PixelColor firstValue, PixelColor secondValue);
         string Name { get; }
     }
 }

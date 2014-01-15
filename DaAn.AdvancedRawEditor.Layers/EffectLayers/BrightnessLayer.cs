@@ -6,20 +6,37 @@ using System.Threading.Tasks;
 
 namespace DaAn.AdvancedRawEditor.Layers.EffectLayers
 {
-    public class BrightnessLayer : OneInputLayer
+    public class BrightnessLayer : Layer
     {
-        private double brightness;
+        public double _brightness;
 
-        public BrightnessLayer(double brightness)
+        public BrightnessLayer(Guid identificator, double brightness)
+            : base(identificator, 1)
         {
-            this.brightness = brightness;
+            this.Brightness = brightness;
         }
 
-        public override PixelValue GetPixelColor(int x, int y)
+        public double Brightness
         {
-            var previousValue = this.InputLayer.GetPixelColor(x, y);
+            get
+            {
+                return this._brightness;
+            }
 
-            return previousValue * brightness;
+            set
+            {
+                this._brightness = value;
+                this.OnChange();
+            }
+        }
+
+        public override PixelColor GetPixelColor(int x, int y)
+        {
+            var previousValue = this.Layers[0].GetPixelColor(x, y);
+
+            return PixelColor.FromNormalizedRGB(previousValue.RN * this._brightness,
+                previousValue.GN * this._brightness,
+                previousValue.BN * this._brightness);
         }
     }
 }

@@ -2,3 +2,7 @@ bin/
 obj/
 /TestResults
 *.suo
+Other Files/
+*.jpg
+*.bmp
+*.c

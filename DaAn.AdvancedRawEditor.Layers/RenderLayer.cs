@@ -9,9 +9,9 @@ namespace DaAn.AdvancedRawEditor.Layers
 {
     public class RenderLayer
     {
-        private ILayer layer;
+        private Layer layer;
 
-        public RenderLayer(ILayer layer)
+        public RenderLayer(Layer layer)
         {
             this.layer = layer;
         }
@@ -32,7 +32,7 @@ namespace DaAn.AdvancedRawEditor.Layers
 
         private Color GetColor(int i, int j)
         {
-            PixelValue pixel = this.layer.GetPixelColor(i, j);
+            PixelColor pixel = this.layer.GetPixelColor(i, j);
 
             pixel.Clip();
 

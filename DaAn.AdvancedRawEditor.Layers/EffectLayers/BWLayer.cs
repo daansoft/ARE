@@ -6,13 +6,76 @@ using System.Threading.Tasks;
 
 namespace DaAn.AdvancedRawEditor.Layers.EffectLayers
 {
-    public class BWLayer : OneInputLayer
+    public class BWLayer : Layer
     {
-        public override PixelValue GetPixelColor(int x, int y)
-        {
-            var previousValue = this.InputLayer.GetPixelColor(x, y);
+        private double _RFactor;
+        private double _GFactor;
+        private double _BFactor;
 
-            return (previousValue.R + previousValue.G + previousValue.B) / 3.0;
+        public BWLayer(Guid identificator, double rFactor, double gFactor, double bFactor)
+            : base(identificator, 1)
+        {
+            this.RFactor = rFactor;
+            this.GFactor = gFactor;
+            this.BFactor = bFactor;
+        }
+
+        public BWLayer(Guid identificator)
+            : this(identificator, 1.0, 1.0, 1.0)
+        {
+        }
+
+        public double RFactor
+        {
+            get
+            {
+                return this._RFactor;
+            }
+
+            set
+            {
+                this._RFactor = value;
+                this.OnChange();
+            }
+        }
+
+        public double GFactor
+        {
+            get
+            {
+                return this._GFactor;
+            }
+
+            set
+            {
+                this._GFactor = value;
+                this.OnChange();
+            }
+        }
+
+
+
+        public double BFactor
+        {
+            get
+            {
+                return this._BFactor;
+            }
+
+            set
+            {
+                this._BFactor = value;
+                this.OnChange();
+            }
+        }
+
+        public override PixelColor GetPixelColor(int x, int y)
+        {
+            var previousValue = this.Layers[0].GetPixelColor(x, y);
+
+            double totalFactor = this._RFactor + this._GFactor + this._BFactor;
+
+            return PixelColor.FromNormalizedV((previousValue.RN * this._RFactor + previousValue.GN * this._GFactor + previousValue.BN * this._BFactor) / totalFactor);
         }
     }
 }

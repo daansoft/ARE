@@ -11,7 +11,7 @@ namespace DaAn.AdvancedRawEditor.Layers.Test
         [TestMethod]
         public void TestJpgFileLayer()
         {
-            ILayer jpgFileLayer = new JpgFileLayer("../../test.jpg");
+            Layer jpgFileLayer = new JpgFileLayer(new Guid("00000000-0000-0000-0000-000000000005"), "../../test.jpg");
 
             Assert.AreEqual(2280, jpgFileLayer.Width);
             Assert.AreEqual(1520, jpgFileLayer.Height);
@@ -22,11 +22,11 @@ namespace DaAn.AdvancedRawEditor.Layers.Test
         [TestMethod]
         public void TestBWLayer()
         {
-            ILayer jpgFileLayer = new JpgFileLayer("../../test.jpg");
+            Layer jpgFileLayer = new JpgFileLayer(new Guid("00000000-0000-0000-0000-000000000005"), "../../test.jpg");
 
-            BWLayer bwLayer = new BWLayer();
+            BWLayer bwLayer = new BWLayer(new Guid("00000000-0000-0000-0000-000000000006"));
 
-            bwLayer.InputLayer = jpgFileLayer;
+            bwLayer.Layers[0] = jpgFileLayer;
 
             var actual = bwLayer.GetPixelColor(610, 600);
 
@@ -39,11 +39,11 @@ namespace DaAn.AdvancedRawEditor.Layers.Test
         [TestMethod]
         public void TestCacheLayer()
         {
-            ILayer jpgFileLayer = new JpgFileLayer("../../test.jpg");
+            Layer jpgFileLayer = new JpgFileLayer(new Guid("00000000-0000-0000-0000-000000000005"), "../../test.jpg");
 
-            CacheLayer cacheLayer = new CacheLayer();
+            CacheLayer cacheLayer = new CacheLayer(new Guid("00000000-0000-0000-0000-000000000006"));
 
-            cacheLayer.InputLayer = jpgFileLayer;
+            cacheLayer.Layers[0] = jpgFileLayer;
             cacheLayer.Initialize();
             cacheLayer.RefreshCache();
 

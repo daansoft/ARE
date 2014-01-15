@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace DaAn.AdvancedRawEditor.Layers
 {
-    public interface ILayer
+    public interface IConnectionBuilder
     {
-        int Width { get; }
-        int Height { get; }
-        string Name { get; set; }
-
-        PixelValue GetPixelColor(int x, int y);
+        void Connect(Layer layer, int inputIndex);
+        void Disconnect(int inputIndex);
     }
 }

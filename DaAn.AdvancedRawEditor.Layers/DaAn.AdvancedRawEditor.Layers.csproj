@@ -40,22 +40,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Builders\LayerBuilder.cs" />
+    <Compile Include="Abstracts\IInputLayer.cs" />
+    <Compile Include="BatchProcess.cs" />
+    <Compile Include="ConnectionBuilders\LayerConnectionBuilder.cs" />
     <Compile Include="EffectLayers\BrightnessLayer.cs" />
+    <Compile Include="ConnectionBuilders\EmptyConnectionBuilder.cs" />
+    <Compile Include="EffectLayers\ContrastLayer.cs" />
+    <Compile Include="EffectLayers\CurvesLayer.cs" />
+    <Compile Include="EffectLayers\ExposureLayer.cs" />
+    <Compile Include="EffectLayers\SaturationLayer.cs" />
+    <Compile Include="IConnectionBuilder.cs" />
+    <Compile Include="LayerCollection.cs" />
+    <Compile Include="LayerEventArgs.cs" />
+    <Compile Include="LayerEventHandler.cs" />
     <Compile Include="MixLayerMethods\AddMixLayerMethod.cs" />
     <Compile Include="MixLayerMethods\AvarageMixLayerMethod.cs" />
+    <Compile Include="MixLayerMethods\WeightedAverageMixLayerMethod.cs" />
     <Compile Include="MixLayerMethods\MultipleMixLayerMethod.cs" />
     <Compile Include="RenderLayer.cs" />
-    <Compile Include="IMixLayerMethod.cs" />
+    <Compile Include="Abstracts\IMixLayerMethod.cs" />
     <Compile Include="MixLayerMethods\NormalMixLayerMethod.cs" />
-    <Compile Include="MaskLayer.cs" />
-    <Compile Include="MixLayer.cs" />
-    <Compile Include="SamplingLayer.cs" />
-    <Compile Include="Tools.cs" />
-    <Compile Include="TwoInputLayer.cs" />
-    <Compile Include="OneInputLayer.cs" />
-    <Compile Include="ILayer.cs" />
-    <Compile Include="CacheLayer.cs">
+    <Compile Include="Layers\MaskLayer.cs" />
+    <Compile Include="Layers\MixLayer.cs" />
+    <Compile Include="Layers\SamplingLayer.cs" />
+    <Compile Include="Abstracts\Layer.cs" />
+    <Compile Include="Layers\CacheLayer.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="EffectLayers\BWLayer.cs">
@@ -65,8 +74,12 @@
     <Compile Include="FileLayers\JpgFileLayer.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="PixelValue.cs" />
+    <Compile Include="PixelColor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\BezierCurvePoint.cs" />
+    <Compile Include="Tools\BezierCurves.cs" />
+    <Compile Include="Tools\Point.cs" />
+    <Compile Include="Tools\Splains.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace DaAn.AdvancedRawEditor.Layers
 {
-    public class SamplingLayer : OneInputLayer
+    public class SamplingLayer : Layer
     {
         private double sampling;
         private double invertSampling;
 
-        public SamplingLayer(double sampling)
+        public SamplingLayer(Guid identificator, double sampling)
+            : base(identificator, 1)
         {
             this.sampling = sampling;
             this.invertSampling = 1.0 / this.sampling;
@@ -33,9 +34,9 @@ namespace DaAn.AdvancedRawEditor.Layers
             }
         }
 
-        public override PixelValue GetPixelColor(int x, int y)
+        public override PixelColor GetPixelColor(int x, int y)
         {
-            return this.InputLayer.GetPixelColor((int)(x * invertSampling), (int)(y * invertSampling));
+            return this.Layers[0].GetPixelColor((int)(x * invertSampling), (int)(y * invertSampling));
         }
     }
 }
