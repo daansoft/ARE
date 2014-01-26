@@ -19,20 +19,24 @@ namespace DaAn.AdvancedRawEditor
         {
             InitializeComponent();
 
+            this.DoubleBuffered = true;
+
             this.layerCollection = new LayerCollection();
 
-            layerCollection.Add(new JpgFileLayer(new Guid("00000000-0000-0000-0000-000000000000"), "../../test.jpg"));
-            layerCollection.Add(new SamplingLayer(new Guid("00000000-0000-0000-0000-000000000001"), 0.25));
-            layerCollection.Add(new ExposureLayer(new Guid("00000000-0000-0000-0000-000000000017"), 1.0));
-            layerCollection.Add(new ContrastLayer(new Guid("00000000-0000-0000-0000-000000000018"), 0.0));
+            layerCollection.Add(new JpgFileLayer(new Guid("00000000-0000-0000-0000-000000000000"), "test.jpg"));
+            layerCollection.Add(new SamplingLayer(new Guid("00000000-0000-0000-0000-000000000001"), 0.1));
+            layerCollection.Add(new CacheLayer(new Guid("00000000-0000-0000-0000-000000000002")));
+            layerCollection.Add(new ExposureLayer(new Guid("00000000-0000-0000-0000-000000000017"), 0.1));
+            layerCollection.Add(new ContrastLayer(new Guid("00000000-0000-0000-0000-000000000018"), 1.2));
             layerCollection.Add(new BWLayer(new Guid("00000000-0000-0000-0000-000000000050")));
             layerCollection.Add(new CurvesLayer(new Guid("00000000-0000-0000-0000-000000000019")));
 
 
             layerCollection.Connect(new Guid("00000000-0000-0000-0000-000000000000"), new Guid("00000000-0000-0000-0000-000000000001"), 0);
-            layerCollection.Connect(new Guid("00000000-0000-0000-0000-000000000001"), new Guid("00000000-0000-0000-0000-000000000017"), 0);
-            //layerCollection.Connect(new Guid("00000000-0000-0000-0000-000000000017"), new Guid("00000000-0000-0000-0000-000000000018"), 0);
-            layerCollection.Connect(new Guid("00000000-0000-0000-0000-000000000017"), new Guid("00000000-0000-0000-0000-000000000050"), 0);
+            layerCollection.Connect(new Guid("00000000-0000-0000-0000-000000000001"), new Guid("00000000-0000-0000-0000-000000000002"), 0);
+            layerCollection.Connect(new Guid("00000000-0000-0000-0000-000000000002"), new Guid("00000000-0000-0000-0000-000000000017"), 0);
+            layerCollection.Connect(new Guid("00000000-0000-0000-0000-000000000017"), new Guid("00000000-0000-0000-0000-000000000018"), 0);
+            layerCollection.Connect(new Guid("00000000-0000-0000-0000-000000000018"), new Guid("00000000-0000-0000-0000-000000000050"), 0);
             layerCollection.Connect(new Guid("00000000-0000-0000-0000-000000000050"), new Guid("00000000-0000-0000-0000-000000000019"), 0);
 
             /*CacheLayer cacheLayer = new CacheLayer(new Guid("00000000-0000-0000-0000-000000000002"));
@@ -81,7 +85,7 @@ namespace DaAn.AdvancedRawEditor
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-            try
+            /*try
             {
                 BezierCurves bc = new BezierCurves();
 
@@ -89,9 +93,10 @@ namespace DaAn.AdvancedRawEditor
                     DaAn.AdvancedRawEditor.Layers.Tools.Point.Create(0.3, 0.8),
                     DaAn.AdvancedRawEditor.Layers.Tools.Point.Create(0.6, 0.8),
                     0,
-                    0));*/
+                    0));*
 
                 Splains s = new Splains(new double[] { -1.0, -0.3, 0.3, 0.4, 0.5, 0.7, 2.0 }, new double[] { -0.25, 0.0, 0.3, 0.3, 0.3, 1.0, 1.25 });
+                s.GenerateData();
 
                 for (double i = -1; i <= 2; i += 0.01)
                 {
@@ -106,25 +111,43 @@ namespace DaAn.AdvancedRawEditor
                 /*e.Graphics.DrawEllipse(Pens.Red, 190 + (int)(bc.First.PL.X * 300), 390 + (int)(-bc.First.PL.Y * 300), 20, 20);
                 e.Graphics.DrawEllipse(Pens.Red, 190 + (int)(bc.First.PP.X * 300), 390 + (int)(-bc.First.PP.Y * 300), 20, 20);
                 e.Graphics.DrawEllipse(Pens.Red, 190 + (int)(bc.Last.PL.X * 300), 390 + (int)(-bc.Last.PL.Y * 300), 20, 20);
-                e.Graphics.DrawEllipse(Pens.Red, 190 + (int)(bc.Last.PP.X * 300), 390 + (int)(-bc.Last.PP.Y * 300), 20, 20);*/
+                e.Graphics.DrawEllipse(Pens.Red, 190 + (int)(bc.Last.PP.X * 300), 390 + (int)(-bc.Last.PP.Y * 300), 20, 20);*
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
+            }*/
 
+
+            try
+            {
+                RenderLayer renderLayer = new RenderLayer(layerCollection.OutputLayer);
+
+                e.Graphics.DrawImage(renderLayer.GetImage(), 0, 0);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.StackTrace);
+            }
         }
 
         private void button1_Click(object sender, System.EventArgs e)
         {
+            var date1 = DateTime.UtcNow;
 
             RenderLayer renderLayer = new RenderLayer(layerCollection.OutputLayer);
 
-            renderLayer.GetImage().Save("testttt.jpg");
+            renderLayer.GetImage().Save(DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString() + ".jpg");
+
+            MessageBox.Show((DateTime.UtcNow - date1).ToString());
 
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+        }
+
+        private void trackBar1_MouseCaptureChanged(object sender, EventArgs e)
         {
             ExposureLayer layer = layerCollection.SelectedLayer as ExposureLayer;
 
@@ -144,6 +167,8 @@ namespace DaAn.AdvancedRawEditor
             layer.Factor2 = this.trackBar2.Value / 100.0;
 
             label1.Text = layer.Factor.ToString() + " " + layer.Factor2.ToString();*/
+
+            this.Refresh();
         }
     }
 }

@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace DaAn.AdvancedRawEditor.Layers.Tools
 {
-    public class Splains
+    public class SplineInterpolation
     {
         private double[] ks;
         private double[][] A;
         private double[] Xs;
         private double[] Ys;
 
-        public Splains(double[] xs, double[] ys)
+        public SplineInterpolation(double[] xs, double[] ys)
         {
             this.Xs = xs;
             this.Ys = ys;
@@ -36,13 +36,14 @@ namespace DaAn.AdvancedRawEditor.Layers.Tools
 
         public void GenerateData()
         {
-            this.getNaturalKs(this.Xs, this.Ys);
+            this.GenerateNeutralKs(this.Xs, this.Ys);
+            this.Solve();
         }
 
-        private void getNaturalKs(double[] xs, double[] ys)	// in x values, in y values, out k values
+        private void GenerateNeutralKs(double[] xs, double[] ys)	// in x values, in y values, out k values
         {
             var n = xs.Length - 1;
-            A = zerosMat(n + 1, n + 2);
+            CreateZeroMatrix(n + 1, n + 2);
 
             for (var i = 1; i < n; i++)	// rows
             {
@@ -62,11 +63,9 @@ namespace DaAn.AdvancedRawEditor.Layers.Tools
             this.A[n][n - 1] = 1 / (xs[n] - xs[n - 1]);
             this.A[n][n] = 2 / (xs[n] - xs[n - 1]);
             this.A[n][n + 1] = 3 * (ys[n] - ys[n - 1]) / ((xs[n] - xs[n - 1]) * (xs[n] - xs[n - 1]));
-
-            this.solve();
         }
 
-        private void solve()	// in Matrix, out solutions
+        private void Solve()	// in Matrix, out solutions
         {
             var m = this.A.Length;
 
@@ -108,9 +107,9 @@ namespace DaAn.AdvancedRawEditor.Layers.Tools
             }
         }
 
-        public double[][] zerosMat(int r, int c)
+        public void CreateZeroMatrix(int r, int c)
         {
-            var A = new double[r][];
+            this.A = new double[r][];
 
             for (var i = 0; i < r; i++)
             {
@@ -119,9 +118,7 @@ namespace DaAn.AdvancedRawEditor.Layers.Tools
                 {
                     this.A[i][j] = 0;
                 }
-            }
-
-            return A;
+            };
         }
 
         private void SwapRows(int k, int l)

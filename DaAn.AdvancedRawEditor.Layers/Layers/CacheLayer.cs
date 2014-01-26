@@ -39,5 +39,12 @@ namespace DaAn.AdvancedRawEditor.Layers
 
             this.cachedData = new PixelColor[this.cachedWidth * this.cachedHeight];
         }
+
+        public override void RefreshAfterChangePrevoiusLayer(object sender, EventArgs e)
+        {
+            this.Initialize();
+            this.RefreshCache();
+            base.RefreshAfterChangePrevoiusLayer(sender, e);
+        }
     }
 }
