@@ -47,10 +47,15 @@
     <Compile Include="EffectLayers\BrightnessLayer.cs" />
     <Compile Include="ConnectionBuilders\EmptyConnectionBuilder.cs" />
     <Compile Include="EffectLayers\ContrastLayer.cs" />
+    <Compile Include="EffectLayers\RGBMatrixLayer.cs" />
+    <Compile Include="EffectLayers\WhiteBalanceLayer.cs" />
     <Compile Include="EffectLayers\CurvesLayer.cs" />
     <Compile Include="EffectLayers\ExposureLayer.cs" />
+    <Compile Include="EffectLayers\GammaLayer.cs" />
+    <Compile Include="EffectLayers\InvertLayer.cs" />
     <Compile Include="EffectLayers\SaturationLayer.cs" />
     <Compile Include="IConnectionBuilder.cs" />
+    <Compile Include="ILayerFactory.cs" />
     <Compile Include="LayerCollection.cs" />
     <Compile Include="LayerEventArgs.cs" />
     <Compile Include="LayerEventHandler.cs" />
@@ -58,6 +63,19 @@
     <Compile Include="MixLayerMethods\AvarageMixLayerMethod.cs" />
     <Compile Include="MixLayerMethods\WeightedAverageMixLayerMethod.cs" />
     <Compile Include="MixLayerMethods\MultipleMixLayerMethod.cs" />
+    <Compile Include="MVP\ILayerViewFactory.cs" />
+    <Compile Include="MVP\LayerPresenterFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MVP\LayerMVPSetting.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MVP\Presenters\BWLayerPresenter.cs" />
+    <Compile Include="MVP\Presenters\SaturationLayerPresenter.cs" />
+    <Compile Include="MVP\Presenters\ExposureLayerPresenter.cs" />
+    <Compile Include="MVP\Views\ISaturationLayerView.cs" />
+    <Compile Include="MVP\Views\IBWLayerView.cs" />
+    <Compile Include="MVP\Views\IExposureLayerView.cs" />
     <Compile Include="RenderLayer.cs" />
     <Compile Include="Abstracts\IMixLayerMethod.cs" />
     <Compile Include="MixLayerMethods\NormalMixLayerMethod.cs" />
@@ -79,6 +97,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tools\BezierCurvePoint.cs" />
     <Compile Include="Tools\BezierCurves.cs" />
+    <Compile Include="Tools\Matrix.cs" />
     <Compile Include="Tools\Point.cs" />
     <Compile Include="Tools\Splains.cs" />
   </ItemGroup>

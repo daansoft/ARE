@@ -1,6 +1,6 @@
 ﻿namespace DaAn.AdvancedRawEditor.Controls
 {
-    partial class LayerControl
+    partial class ImageViewControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -30,12 +30,13 @@
         {
             this.SuspendLayout();
             // 
-            // LayerControl
+            // ImageViewControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Name = "LayerControl";
-            this.Size = new System.Drawing.Size(226, 86);
+            this.DoubleBuffered = true;
+            this.Name = "ImageViewControl";
+            this.Size = new System.Drawing.Size(925, 598);
             this.ResumeLayout(false);
 
         }

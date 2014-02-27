@@ -24,14 +24,26 @@ namespace DaAn.AdvancedRawEditor.Layers.EffectLayers
         {
             var previousValue = this.Layers[0].GetPixelColor(x, y);
 
-            return PixelColor.FromNormalizedRGB(this.Function(previousValue.RN),
-                this.Function(previousValue.GN),
-                this.Function(previousValue.BN));
+            if (this.Enabled)
+            {
+                return PixelColor.FromNormalizedRGB(this.Function(previousValue.RN),
+                    this.Function(previousValue.GN),
+                    this.Function(previousValue.BN));
+            }
+            else
+            {
+                return previousValue; // TODO sprawdzić czy tak można przeyłać
+            }
         }
 
         private double Function(double value)
         {
             return (1.0 / (1 + Math.Exp(-this.Factor * (value - 0.5))));
+        }
+
+        public override object GetLayerView()
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -35,5 +35,10 @@ namespace DaAn.AdvancedRawEditor.Layers.EffectLayers
                 ((previousValue.GN - 0.5) * this._contrast) + 0.5,
                 ((previousValue.BN - 0.5) * this._contrast) + 0.5);
         }
+
+        public override object GetLayerView()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

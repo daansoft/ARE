@@ -20,5 +20,10 @@ namespace DaAn.AdvancedRawEditor.Layers.EffectLayers
         {
             return this.Color;
         }
+
+        public override object GetLayerView()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -1,4 +1,8 @@
-﻿using System;
+﻿using DaAn.AdvancedRawEditor.Controls;
+using DaAn.AdvancedRawEditor.Layers.MVP;
+using DaAn.AdvancedRawEditor.MVP;
+using DaAn.AdvancedRawEditor.MVP.Presenters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +20,14 @@ namespace DaAn.AdvancedRawEditor
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main());
+            MVPSetting.PresenterFactory.ViewFactory = new WinFormsViewFactory();
+
+            LayerMVPSetting.LayerViewFactory = new ControlLayerViewFactory();
+
+            MainForm form = new MainForm(MVPSetting.PresenterFactory.GetMainPresenter(),
+                MVPSetting.PresenterFactory.GetDesignerPresenter(),
+                MVPSetting.PresenterFactory.GetLayerSettingPresenter());
+            Application.Run(form);
         }
     }
 }

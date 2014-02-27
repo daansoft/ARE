@@ -38,5 +38,10 @@ namespace DaAn.AdvancedRawEditor.Layers.EffectLayers
                 previousValue.GN * this._brightness,
                 previousValue.BN * this._brightness);
         }
+
+        public override object GetLayerView()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

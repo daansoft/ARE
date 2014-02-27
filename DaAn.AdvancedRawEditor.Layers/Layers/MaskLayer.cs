@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DaAn.AdvancedRawEditor.Layers
+namespace DaAn.AdvancedRawEditor.Layers.Layers
 {
     public class MaskLayer : Layer
     {
@@ -49,6 +49,11 @@ namespace DaAn.AdvancedRawEditor.Layers
             return PixelColor.FromNormalizedRGB(maskedInputR + maskedOutputR,
                 maskedInputG + maskedOutputG,
                 maskedInputB + maskedOutputB);
+        }
+
+        public override object GetLayerView()
+        {
+            throw new NotImplementedException();
         }
     }
 }

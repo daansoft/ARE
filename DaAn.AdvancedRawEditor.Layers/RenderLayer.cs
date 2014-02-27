@@ -42,7 +42,7 @@ namespace DaAn.AdvancedRawEditor.Layers
                 for (int j = 0; j < this.layer.Height; j++)
                 {
                     var d = bmpData.Stride * j + i * 3;
-                    var color = this.layer.GetPixelColor(i, j);
+                    var color = this.GetColor(i, j);
                     rgbValues[d] = (byte)color.R;
                     rgbValues[d + 1] = (byte)color.G;
                     rgbValues[d + 2] = (byte)color.B;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DaAn.AdvancedRawEditor.Layers.MVP;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -39,6 +40,11 @@ namespace DaAn.AdvancedRawEditor.Layers.EffectLayers
             return PixelColor.FromNormalizedRGB(gray * (1.0 - this._saturation) + previousValue.RN * this._saturation,
                 gray * (1.0 - this._saturation) + previousValue.GN * this._saturation,
                 gray * (1.0 - this._saturation) + previousValue.BN * this._saturation);
+        }
+
+        public override object GetLayerView()
+        {
+            return LayerMVPSetting.LayerViewFactory.GetSaturationLayerView(this);
         }
     }
 }

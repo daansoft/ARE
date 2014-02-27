@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DaAn.AdvancedRawEditor.Layers.MVP;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -76,6 +77,11 @@ namespace DaAn.AdvancedRawEditor.Layers.EffectLayers
             double totalFactor = this._RFactor + this._GFactor + this._BFactor;
 
             return PixelColor.FromNormalizedV((previousValue.RN * this._RFactor + previousValue.GN * this._GFactor + previousValue.BN * this._BFactor) / totalFactor);
+        }
+
+        public override object GetLayerView()
+        {
+            return LayerMVPSetting.LayerViewFactory.GetBWLayerView(this);
         }
     }
 }

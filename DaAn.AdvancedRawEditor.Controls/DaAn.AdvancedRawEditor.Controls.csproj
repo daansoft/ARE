@@ -41,17 +41,63 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LayerControl.cs">
+    <Compile Include="DesignerControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="LayerControl.Designer.cs">
-      <DependentUpon>LayerControl.cs</DependentUpon>
+    <Compile Include="DesignerControl.Designer.cs">
+      <DependentUpon>DesignerControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layers\BWLayerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Layers\BWLayerControl.Designer.cs">
+      <DependentUpon>BWLayerControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControlLayerViewFactory.cs" />
+    <Compile Include="Layers\SaturationLayerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Layers\SaturationLayerControl.Designer.cs">
+      <DependentUpon>SaturationLayerControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layers\ExposureLayerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Layers\ExposureLayerControl.Designer.cs">
+      <DependentUpon>ExposureLayerControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImageViewControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ImageViewControl.Designer.cs">
+      <DependentUpon>ImageViewControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LayerSettingControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerSettingControl.Designer.cs">
+      <DependentUpon>LayerSettingControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="LayerControl.resx">
-      <DependentUpon>LayerControl.cs</DependentUpon>
+    <EmbeddedResource Include="DesignerControl.resx">
+      <DependentUpon>DesignerControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Layers\BWLayerControl.resx">
+      <DependentUpon>BWLayerControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Layers\SaturationLayerControl.resx">
+      <DependentUpon>SaturationLayerControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Layers\ExposureLayerControl.resx">
+      <DependentUpon>ExposureLayerControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImageViewControl.resx">
+      <DependentUpon>ImageViewControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerSettingControl.resx">
+      <DependentUpon>LayerSettingControl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -59,6 +105,13 @@
       <Project>{c43cde33-576c-4ef7-9b44-db56eec79cc8}</Project>
       <Name>DaAn.AdvancedRawEditor.Layers</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DaAn.AdvancedRawEditor.MVP\DaAn.AdvancedRawEditor.MVP.csproj">
+      <Project>{77cfd0f2-c26c-4d00-a4d2-465f5b18d438}</Project>
+      <Name>DaAn.AdvancedRawEditor.MVP</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Buttons\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

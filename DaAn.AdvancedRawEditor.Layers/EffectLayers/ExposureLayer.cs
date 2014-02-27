@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DaAn.AdvancedRawEditor.Layers.MVP;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -38,6 +39,11 @@ namespace DaAn.AdvancedRawEditor.Layers.EffectLayers
             return PixelColor.FromNormalizedRGB(previousValue.RN * this.powExposure,
                 previousValue.GN * this.powExposure,
                 previousValue.BN * this.powExposure);
+        }
+
+        public override object GetLayerView()
+        {
+            return LayerMVPSetting.LayerViewFactory.GetExposureLayerView(this);
         }
     }
 }

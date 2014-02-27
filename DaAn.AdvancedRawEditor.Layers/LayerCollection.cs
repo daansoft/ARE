@@ -10,6 +10,7 @@ namespace DaAn.AdvancedRawEditor.Layers
     public class LayerCollection
     {
         private List<Layer> layers;
+        private Layer selectedLayer;
 
         public LayerCollection()
         {
@@ -20,7 +21,22 @@ namespace DaAn.AdvancedRawEditor.Layers
 
         public Layer OutputLayer { get; private set; }
 
-        public Layer SelectedLayer { get; private set; }
+        public Layer SelectedLayer
+        {
+            get
+            {
+                return this.selectedLayer;
+            }
+            private set
+            {
+                this.selectedLayer = value;
+                this.OnSelect();
+            }
+        }
+
+        public event LayerEventHandler Select;
+
+        public event LayerEventHandler Change;
 
         public void Add(Layer layer)
         {
@@ -53,7 +69,25 @@ namespace DaAn.AdvancedRawEditor.Layers
 
         public void SetOutputLayer(Guid identificator)
         {
+            if (this.OutputLayer != null)
+            {
+                this.OutputLayer.Change -= layer_Change;
+            }
+
             this.OutputLayer = this.ReadLayer(identificator);
+
+            if (this.OutputLayer != null)
+            {
+                this.OutputLayer.Change += layer_Change;
+            }
+        }
+
+        void layer_Change(object sender, EventArgs e)
+        {
+            if (this.Change != null)
+            {
+                this.Change(sender, e);
+            }
         }
 
         public void SetSelectedLayer(Guid identificator)
@@ -64,6 +98,14 @@ namespace DaAn.AdvancedRawEditor.Layers
         public void SetInputLayer(Guid identificator)
         {
             this.InputLayer = this.ReadLayer(identificator);
+        }
+
+        public virtual void OnSelect()
+        {
+            if (this.Select != null)
+            {
+                this.Select(this.selectedLayer, new EventArgs());
+            }
         }
     }
 }

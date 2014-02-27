@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DaAn.AdvancedRawEditor.Layers.FileLayers;
 using DaAn.AdvancedRawEditor.Layers.EffectLayers;
+using DaAn.AdvancedRawEditor.Layers.Layers;
 
 namespace DaAn.AdvancedRawEditor.Layers.Test
 {

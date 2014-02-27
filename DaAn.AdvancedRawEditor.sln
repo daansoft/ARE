@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DaAn.AdvancedRawEditor.Laye
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DaAn.AdvancedRawEditor.Controls", "DaAn.AdvancedRawEditor.Controls\DaAn.AdvancedRawEditor.Controls.csproj", "{2F471BD4-5CC8-422B-81AA-A476A86F7C62}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DaAn.AdvancedRawEditor.MVP", "DaAn.AdvancedRawEditor.MVP\DaAn.AdvancedRawEditor.MVP.csproj", "{77CFD0F2-C26C-4D00-A4D2-465F5B18D438}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{2F471BD4-5CC8-422B-81AA-A476A86F7C62}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F471BD4-5CC8-422B-81AA-A476A86F7C62}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F471BD4-5CC8-422B-81AA-A476A86F7C62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77CFD0F2-C26C-4D00-A4D2-465F5B18D438}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77CFD0F2-C26C-4D00-A4D2-465F5B18D438}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77CFD0F2-C26C-4D00-A4D2-465F5B18D438}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77CFD0F2-C26C-4D00-A4D2-465F5B18D438}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

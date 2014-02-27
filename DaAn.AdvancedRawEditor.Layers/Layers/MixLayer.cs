@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DaAn.AdvancedRawEditor.Layers
+namespace DaAn.AdvancedRawEditor.Layers.Layers
 {
     public class MixLayer : Layer
     {
@@ -18,6 +18,11 @@ namespace DaAn.AdvancedRawEditor.Layers
         public override PixelColor GetPixelColor(int x, int y)
         {
             return this.MixLayerMethod.MixValue(this.Layers[0].GetPixelColor(x, y), this.Layers[1].GetPixelColor(x, y));
+        }
+
+        public override object GetLayerView()
+        {
+            throw new NotImplementedException();
         }
     }
 }

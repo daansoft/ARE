@@ -66,5 +66,10 @@ namespace DaAn.AdvancedRawEditor.Layers.FileLayers
 
             this.bitmap.UnlockBits(bmpdata);
         }
+
+        public override object GetLayerView()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

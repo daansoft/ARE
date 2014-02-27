@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DaAn.AdvancedRawEditor.Layers
+namespace DaAn.AdvancedRawEditor.Layers.Layers
 {
     public class SamplingLayer : Layer
     {
@@ -37,6 +37,11 @@ namespace DaAn.AdvancedRawEditor.Layers
         public override PixelColor GetPixelColor(int x, int y)
         {
             return this.Layers[0].GetPixelColor((int)(x * invertSampling), (int)(y * invertSampling));
+        }
+
+        public override object GetLayerView()
+        {
+            throw new NotImplementedException();
         }
     }
 }

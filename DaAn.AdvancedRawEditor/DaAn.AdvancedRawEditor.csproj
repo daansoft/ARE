@@ -44,16 +44,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Main.cs">
+    <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main.Designer.cs">
-      <DependentUpon>Main.cs</DependentUpon>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Main.resx">
-      <DependentUpon>Main.cs</DependentUpon>
+    <Compile Include="WinFormsViewFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -78,9 +81,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DaAn.AdvancedRawEditor.Controls\DaAn.AdvancedRawEditor.Controls.csproj">
+      <Project>{2F471BD4-5CC8-422B-81AA-A476A86F7C62}</Project>
+      <Name>DaAn.AdvancedRawEditor.Controls</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DaAn.AdvancedRawEditor.Layers\DaAn.AdvancedRawEditor.Layers.csproj">
       <Project>{c43cde33-576c-4ef7-9b44-db56eec79cc8}</Project>
       <Name>DaAn.AdvancedRawEditor.Layers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DaAn.AdvancedRawEditor.MVP\DaAn.AdvancedRawEditor.MVP.csproj">
+      <Project>{77cfd0f2-c26c-4d00-a4d2-465f5b18d438}</Project>
+      <Name>DaAn.AdvancedRawEditor.MVP</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

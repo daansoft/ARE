@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DaAn.AdvancedRawEditor.Layers
+namespace DaAn.AdvancedRawEditor.Layers.Layers
 {
     public class CacheLayer : Layer
     {
@@ -45,6 +45,11 @@ namespace DaAn.AdvancedRawEditor.Layers
             this.Initialize();
             this.RefreshCache();
             base.RefreshAfterChangePrevoiusLayer(sender, e);
+        }
+
+        public override object GetLayerView()
+        {
+            throw new NotImplementedException();
         }
     }
 }
