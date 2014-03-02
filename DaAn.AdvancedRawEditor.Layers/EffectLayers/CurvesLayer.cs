@@ -26,9 +26,9 @@ namespace DaAn.AdvancedRawEditor.Layers.EffectLayers
 
             if (this.Enabled)
             {
-                return PixelColor.FromNormalizedRGB(this.Function(previousValue.RN),
-                    this.Function(previousValue.GN),
-                    this.Function(previousValue.BN));
+                return PixelColor.FromNormalizedRGB(this.Function(previousValue.R),
+                    this.Function(previousValue.G),
+                    this.Function(previousValue.B));
             }
             else
             {

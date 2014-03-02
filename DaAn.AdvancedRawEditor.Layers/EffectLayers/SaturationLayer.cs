@@ -35,11 +35,11 @@ namespace DaAn.AdvancedRawEditor.Layers.EffectLayers
         {
             var previousValue = this.Layers[0].GetPixelColor(x, y);
 
-            double gray = (previousValue.RN * 0.3) + (previousValue.GN * 0.59) + (previousValue.BN * 0.11);
+            double gray = (previousValue.R * 0.3) + (previousValue.G * 0.59) + (previousValue.B * 0.11);
 
-            return PixelColor.FromNormalizedRGB(gray * (1.0 - this._saturation) + previousValue.RN * this._saturation,
-                gray * (1.0 - this._saturation) + previousValue.GN * this._saturation,
-                gray * (1.0 - this._saturation) + previousValue.BN * this._saturation);
+            return PixelColor.FromNormalizedRGB(gray * (1.0 - this._saturation) + previousValue.R * this._saturation,
+                gray * (1.0 - this._saturation) + previousValue.G * this._saturation,
+                gray * (1.0 - this._saturation) + previousValue.B * this._saturation);
         }
 
         public override object GetLayerView()

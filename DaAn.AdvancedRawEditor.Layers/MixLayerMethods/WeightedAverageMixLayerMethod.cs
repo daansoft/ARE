@@ -15,9 +15,9 @@ namespace DaAn.AdvancedRawEditor.Layers.MixLayerMethods
 
         public PixelColor MixValue(PixelColor firstValue, PixelColor secondValue)
         {
-            return PixelColor.FromNormalizedRGB(firstValue.RN * (1.0 - this.Weight) + secondValue.RN * this.Weight,
-                firstValue.GN * (1.0 - this.Weight) + secondValue.GN * this.Weight,
-                firstValue.BN * (1.0 - this.Weight) + secondValue.BN * this.Weight);
+            return PixelColor.FromNormalizedRGB(firstValue.R * (1.0 - this.Weight) + secondValue.R * this.Weight,
+                firstValue.G * (1.0 - this.Weight) + secondValue.G * this.Weight,
+                firstValue.B * (1.0 - this.Weight) + secondValue.B * this.Weight);
         }
 
         public string Name

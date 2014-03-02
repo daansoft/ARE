@@ -10,9 +10,9 @@ namespace DaAn.AdvancedRawEditor.Layers.MixLayerMethods
     {
         public PixelColor MixValue(PixelColor firstValue, PixelColor secondValue)
         {
-            return PixelColor.FromNormalizedRGB(firstValue.RN + secondValue.RN,
-                firstValue.GN + secondValue.GN,
-                firstValue.BN + secondValue.BN);
+            return PixelColor.FromNormalizedRGB(firstValue.R + secondValue.R,
+                firstValue.G + secondValue.G,
+                firstValue.B + secondValue.B);
         }
 
         public string Name

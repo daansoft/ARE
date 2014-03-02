@@ -43,9 +43,9 @@ namespace DaAn.AdvancedRawEditor.Layers
                 {
                     var d = bmpData.Stride * j + i * 3;
                     var color = this.GetColor(i, j);
-                    rgbValues[d] = (byte)color.R;
+                    rgbValues[d + 2] = (byte)color.R;
                     rgbValues[d + 1] = (byte)color.G;
-                    rgbValues[d + 2] = (byte)color.B;
+                    rgbValues[d + 0] = (byte)color.B;
                 }
             }
 
@@ -64,7 +64,7 @@ namespace DaAn.AdvancedRawEditor.Layers
 
             pixel.Clip();
 
-            return Color.FromArgb((byte)Math.Round(pixel.R, MidpointRounding.ToEven), (byte)Math.Round(pixel.G, MidpointRounding.ToEven), (byte)Math.Round(pixel.B, MidpointRounding.ToEven));
+            return Color.FromArgb((byte)Math.Round(pixel.R * 255.0, MidpointRounding.AwayFromZero), (byte)Math.Round(pixel.G * 255.0, MidpointRounding.ToEven), (byte)Math.Round(pixel.B * 255.0, MidpointRounding.ToEven));
         }
     }
 }

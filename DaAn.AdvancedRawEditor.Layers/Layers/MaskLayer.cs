@@ -32,18 +32,18 @@ namespace DaAn.AdvancedRawEditor.Layers.Layers
             {
                 PixelColor previousColor = this.Layers[0].GetPixelColor(x, y);
 
-                maskedInputR = previousColor.RN * (1 - maskValue);
-                maskedInputG = previousColor.GN * (1 - maskValue);
-                maskedInputB = previousColor.BN * (1 - maskValue);
+                maskedInputR = previousColor.R * (1 - maskValue);
+                maskedInputG = previousColor.G * (1 - maskValue);
+                maskedInputB = previousColor.B * (1 - maskValue);
             }
 
             if (maskValue > 0.0)
             {
                 PixelColor previousColor = this.Layers[1].GetPixelColor(x, y);
 
-                maskedOutputR = previousColor.RN * maskValue;
-                maskedOutputG = previousColor.GN * maskValue;
-                maskedOutputB = previousColor.BN * maskValue;
+                maskedOutputR = previousColor.R * maskValue;
+                maskedOutputG = previousColor.G * maskValue;
+                maskedOutputB = previousColor.B * maskValue;
             }
 
             return PixelColor.FromNormalizedRGB(maskedInputR + maskedOutputR,

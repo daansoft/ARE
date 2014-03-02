@@ -34,9 +34,9 @@ namespace DaAn.AdvancedRawEditor.Layers.EffectLayers
         {
             var previousValue = this.Layers[0].GetPixelColor(x, y);
 
-            return PixelColor.FromNormalizedRGB(previousValue.RN * this._brightness,
-                previousValue.GN * this._brightness,
-                previousValue.BN * this._brightness);
+            return PixelColor.FromNormalizedRGB(previousValue.R * this._brightness,
+                previousValue.G * this._brightness,
+                previousValue.B * this._brightness);
         }
 
         public override object GetLayerView()

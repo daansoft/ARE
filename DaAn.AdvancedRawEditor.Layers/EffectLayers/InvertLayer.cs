@@ -13,7 +13,7 @@ namespace DaAn.AdvancedRawEditor.Layers.EffectLayers
         {
             var previousValue = this.Layers[0].GetPixelColor(x, y);
 
-            return PixelColor.FromNormalizedRGB(-previousValue.RN + 1.0, -previousValue.GN + 1.0, -previousValue.BN + 1.0);
+            return PixelColor.FromNormalizedRGB(-previousValue.R + 1.0, -previousValue.G + 1.0, -previousValue.B + 1.0);
         }
 
         public override object GetLayerView()

@@ -27,8 +27,8 @@ namespace DaAn.AdvancedRawEditor.MVP.Presenters
             layerCollection.Add(new CacheLayer(new Guid("00000000-0000-0000-0000-000000000002")));
             layerCollection.Add(new ExposureLayer(new Guid("00000000-0000-0000-0000-000000000017"), 0.0));
             layerCollection.Add(new ContrastLayer(new Guid("00000000-0000-0000-0000-000000000018"), 1.0));
-            layerCollection.Add(new SaturationLayer(new Guid("00000000-0000-0000-0000-000000000050"), 1.0));
-            layerCollection.Add(new CurvesLayer(new Guid("00000000-0000-0000-0000-000000000019")) { Enabled = true });
+            layerCollection.Add(new RGBMatrixLayer(new Guid("00000000-0000-0000-0000-000000000050")));
+            layerCollection.Add(new ExposureLayer(new Guid("00000000-0000-0000-0000-000000000019"), 0) { Enabled = true });
 
 
             layerCollection.Connect(new Guid("00000000-0000-0000-0000-000000000000"), new Guid("00000000-0000-0000-0000-000000000001"), 0);

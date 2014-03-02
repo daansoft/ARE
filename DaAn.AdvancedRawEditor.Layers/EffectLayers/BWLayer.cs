@@ -76,7 +76,7 @@ namespace DaAn.AdvancedRawEditor.Layers.EffectLayers
 
             double totalFactor = this._RFactor + this._GFactor + this._BFactor;
 
-            return PixelColor.FromNormalizedV((previousValue.RN * this._RFactor + previousValue.GN * this._GFactor + previousValue.BN * this._BFactor) / totalFactor);
+            return PixelColor.FromNormalizedV((previousValue.R * this._RFactor + previousValue.G * this._GFactor + previousValue.B * this._BFactor) / totalFactor);
         }
 
         public override object GetLayerView()

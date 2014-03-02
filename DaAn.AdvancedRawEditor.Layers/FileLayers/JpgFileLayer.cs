@@ -47,7 +47,7 @@ namespace DaAn.AdvancedRawEditor.Layers.FileLayers
         public override PixelColor GetPixelColor(int x, int y)
         {
             var d = this.stride * y + x * 3;
-            return PixelColor.FromRGB(this.bitmapData[d], this.bitmapData[d + 1], this.bitmapData[d + 2]);
+            return PixelColor.FromRGB(this.bitmapData[d + 2], this.bitmapData[d + 1], this.bitmapData[d + 0]);
         }
 
         public void SetInputData(string fileName)

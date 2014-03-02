@@ -30,48 +30,9 @@ namespace DaAn.AdvancedRawEditor.Layers
             }
         }
 
-        public double RN { get; set; }
-        public double GN { get; set; }
-        public double BN { get; set; }
-
-        public double R
-        {
-            get
-            {
-                return this.RN * 255.0;
-            }
-
-            set
-            {
-                this.RN = value / 255.0;
-            }
-        }
-
-        public double G
-        {
-            get
-            {
-                return this.GN * 255.0;
-            }
-
-            set
-            {
-                this.GN = value / 255.0;
-            }
-        }
-
-        public double B
-        {
-            get
-            {
-                return this.BN * 255.0;
-            }
-
-            set
-            {
-                this.BN = value / 255.0;
-            }
-        }
+        public double R { get; set; }
+        public double G { get; set; }
+        public double B { get; set; }
 
         public PixelColor()
         {
@@ -80,9 +41,9 @@ namespace DaAn.AdvancedRawEditor.Layers
 
         public void Clip()
         {
-            this.RN = PixelColor.Cilp(this.RN);
-            this.GN = PixelColor.Cilp(this.GN);
-            this.BN = PixelColor.Cilp(this.BN);
+            this.R = PixelColor.Cilp(this.R);
+            this.G = PixelColor.Cilp(this.G);
+            this.B = PixelColor.Cilp(this.B);
         }
 
         private static double Cilp(double value)
@@ -97,12 +58,12 @@ namespace DaAn.AdvancedRawEditor.Layers
 
         public static PixelColor FromRGB(double r, double g, double b)
         {
-            return new PixelColor() { R = r, G = g, B = b };
+            return new PixelColor() { R = r / 255.0, G = g / 255.0, B = b / 255.0 };
         }
 
         public static PixelColor FromNormalizedRGB(double rn, double gn, double bn)
         {
-            return new PixelColor() { RN = rn, GN = gn, BN = bn };
+            return new PixelColor() { R = rn, G = gn, B = bn };
         }
 
         public static PixelColor FromNormalizedV(double vn)
