@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DaAn.AdvancedRawEditor.Layers.MVP;
+using System;
 
 namespace DaAn.AdvancedRawEditor.Layers.EffectLayers
 {
@@ -31,14 +32,27 @@ namespace DaAn.AdvancedRawEditor.Layers.EffectLayers
         {
             var previousValue = this.Layers[0].GetPixelColor(x, y);
 
-            return PixelColor.FromNormalizedRGB(((previousValue.R - 0.5) * this._contrast) + 0.5,
-                ((previousValue.G - 0.5) * this._contrast) + 0.5,
-                ((previousValue.B - 0.5) * this._contrast) + 0.5);
+            return PixelColor.FromNormalizedRGB(this.Function(previousValue.R),
+                this.Function(previousValue.G),
+                this.Function(previousValue.B));
+        }
+
+        private double Function(double value)
+        {
+            return ((value - 0.5) * this._contrast) + 0.5;
+
+            //return (1.0 / (1 + Math.Exp(-this.Contrast * 2 * (value - 0.5))));
+
+            /*double e2x = Math.Exp(-2.0 * value);
+
+            return (1.0 - e2x) / (1.0 + e2x);*/
+
+            //return (Math.Atan(this._contrast * 5.0 * (value - 0.5)) / Math.Atan(this._contrast * 5.0 * 0.5)) / 2.0 + 0.5;
         }
 
         public override object GetLayerView()
         {
-            throw new NotImplementedException();
+            return LayerMVPSetting.LayerViewFactory.GetContrastLayerView(this);
         }
     }
 }

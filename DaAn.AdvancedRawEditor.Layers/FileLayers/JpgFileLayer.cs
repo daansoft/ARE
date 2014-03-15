@@ -69,7 +69,7 @@ namespace DaAn.AdvancedRawEditor.Layers.FileLayers
 
         public override object GetLayerView()
         {
-            throw new NotImplementedException();
+            return null;
         }
     }
 }

@@ -19,7 +19,7 @@ namespace DaAn.AdvancedRawEditor.MVP.Presenters
         {
             this.layerCollection = new LayerCollection();
 
-            this.layerCollection.Select += layerCollection_Select;
+            //this.layerCollection.Select += layerCollection_Select;
             this.layerCollection.Change += layerCollection_Change;
 
             layerCollection.Add(new JpgFileLayer(new Guid("00000000-0000-0000-0000-000000000000"), "test.jpg"));
@@ -27,8 +27,8 @@ namespace DaAn.AdvancedRawEditor.MVP.Presenters
             layerCollection.Add(new CacheLayer(new Guid("00000000-0000-0000-0000-000000000002")));
             layerCollection.Add(new ExposureLayer(new Guid("00000000-0000-0000-0000-000000000017"), 0.0));
             layerCollection.Add(new ContrastLayer(new Guid("00000000-0000-0000-0000-000000000018"), 1.0));
-            layerCollection.Add(new RGBMatrixLayer(new Guid("00000000-0000-0000-0000-000000000050")));
-            layerCollection.Add(new ExposureLayer(new Guid("00000000-0000-0000-0000-000000000019"), 0) { Enabled = true });
+            layerCollection.Add(new LevelsLayer(new Guid("00000000-0000-0000-0000-000000000050")));
+            layerCollection.Add(new CurvesLayer(new Guid("00000000-0000-0000-0000-000000000019")) { Enabled = true });
 
 
             layerCollection.Connect(new Guid("00000000-0000-0000-0000-000000000000"), new Guid("00000000-0000-0000-0000-000000000001"), 0);
@@ -39,7 +39,10 @@ namespace DaAn.AdvancedRawEditor.MVP.Presenters
             layerCollection.Connect(new Guid("00000000-0000-0000-0000-000000000050"), new Guid("00000000-0000-0000-0000-000000000019"), 0);
 
             layerCollection.SetOutputLayer(new Guid("00000000-0000-0000-0000-000000000019"));
-            layerCollection.SetSelectedLayer(new Guid("00000000-0000-0000-0000-000000000050"));
+            layerCollection.SetSelectedLayer(new Guid("00000000-0000-0000-0000-000000000019"));
+
+            this.DesignerView.SetSelectedLayers(this.layerCollection.Layers);
+
         }
 
         void layerCollection_Change(object sender, EventArgs e)

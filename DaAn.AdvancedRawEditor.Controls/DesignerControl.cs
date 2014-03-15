@@ -36,5 +36,11 @@ namespace DaAn.AdvancedRawEditor.Controls
         {
             throw new NotImplementedException();
         }
+
+
+        public void SetSelectedLayers(List<Layer> layers)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

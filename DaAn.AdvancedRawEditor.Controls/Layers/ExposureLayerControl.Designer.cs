@@ -35,7 +35,7 @@
             // 
             // exposureTB
             // 
-            this.exposureTB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.exposureTB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.exposureTB.Location = new System.Drawing.Point(3, 20);
             this.exposureTB.Maximum = 400;
@@ -62,7 +62,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.exposureTB);
             this.Name = "ExposureLayerControl";
-            this.Size = new System.Drawing.Size(391, 282);
+            this.Size = new System.Drawing.Size(391, 79);
             ((System.ComponentModel.ISupportInitialize)(this.exposureTB)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

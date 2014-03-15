@@ -6,18 +6,16 @@ using System.Threading.Tasks;
 
 namespace DaAn.AdvancedRawEditor.Layers.EffectLayers
 {
-    public class CurvesLayer : Layer
+    public class LevelsLayer : Layer
     {
-        public CurvesLayer(Guid identificator)
+        public double InputMin;
+        public double InputMax;
+
+        public LevelsLayer(Guid identificator)
             : base(identificator, 1)
         {
-            this.Factor = 5;
-        }
-
-        public double Factor
-        {
-            get;
-            set;
+            this.InputMin = 0.0;
+            this.InputMax = 1.0;
         }
 
         public override PixelColor GetPixelColor(int x, int y)
@@ -38,7 +36,7 @@ namespace DaAn.AdvancedRawEditor.Layers.EffectLayers
 
         private double Function(double value)
         {
-            return (1.0 / (1 + Math.Exp(-this.Factor * (value - 0.5))));
+            return (value - this.InputMin) / (this.InputMax - this.InputMin);
         }
 
         public override object GetLayerView()

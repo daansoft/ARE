@@ -54,6 +54,18 @@
       <DependentUpon>BWLayerControl.cs</DependentUpon>
     </Compile>
     <Compile Include="ControlLayerViewFactory.cs" />
+    <Compile Include="Layers\ContrastLayerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Layers\ContrastLayerControl.Designer.cs">
+      <DependentUpon>ContrastLayerControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layers\RGBMatrixLayerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Layers\RGBMatrixLayerControl.Designer.cs">
+      <DependentUpon>RGBMatrixLayerControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Layers\SaturationLayerControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -86,6 +98,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Layers\BWLayerControl.resx">
       <DependentUpon>BWLayerControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Layers\ContrastLayerControl.resx">
+      <DependentUpon>ContrastLayerControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Layers\RGBMatrixLayerControl.resx">
+      <DependentUpon>RGBMatrixLayerControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Layers\SaturationLayerControl.resx">
       <DependentUpon>SaturationLayerControl.cs</DependentUpon>

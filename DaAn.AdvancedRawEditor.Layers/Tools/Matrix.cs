@@ -20,6 +20,19 @@ namespace DaAn.AdvancedRawEditor.Layers.Tools
             }
         }
 
+        public double[] this[int index]
+        {
+            get
+            {
+                return this._Matrix[index];
+            }
+
+            set
+            {
+                this._Matrix[index] = value;
+            }
+        }
+
         public double Get(int x, int y)
         {
             return this._Matrix[x][y];

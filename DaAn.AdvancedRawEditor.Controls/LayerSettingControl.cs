@@ -29,7 +29,7 @@ namespace DaAn.AdvancedRawEditor.Controls
 
         public void Add(object setting)
         {
-            this.Controls.Add((Control)setting);
+            this.flowLayoutPanel1.Controls.Add((Control)setting);
         }
     }
 }

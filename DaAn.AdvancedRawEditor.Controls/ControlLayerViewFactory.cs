@@ -27,5 +27,15 @@ namespace DaAn.AdvancedRawEditor.Controls
         {
             return new SaturationLayerControl(new SaturationLayerPresenter(saturationLayer));
         }
+
+        public IContrastLayerView GetContrastLayerView(ContrastLayer contrastLayer)
+        {
+            return new ContrastLayerControl(new ContrastLayerPresenter(contrastLayer));
+        }
+
+        public IRGBMatrixLayerView GetRGBMatrixLayerView(RGBMatrixLayer rgbMatrixLayer)
+        {
+            return new RGBMatrixLayerControl(new RGBMatrixLayerPresenter(rgbMatrixLayer));
+        }
     }
 }

@@ -7,6 +7,7 @@ using DaAn.AdvancedRawEditor.Layers.Tools;
 using DaAn.AdvancedRawEditor.MVP.Presenters;
 using DaAn.AdvancedRawEditor.MVP.Views;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -71,6 +72,12 @@ namespace DaAn.AdvancedRawEditor
         public void RefreshImageView()
         {
             this.imageViewC.Refresh();
+        }
+
+
+        public void SetSelectedLayers(List<Layer> layers)
+        {
+            this.LayerSettingPresenter.SetLayersView(layers);
         }
     }
 }

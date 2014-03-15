@@ -17,5 +17,7 @@ namespace DaAn.AdvancedRawEditor.MVP.Views
         void SendMessage(string message);
 
         void RefreshImageView();
+
+        void SetSelectedLayers(List<Layer> layers);
     }
 }

@@ -31,9 +31,7 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.imageViewC = new DaAn.AdvancedRawEditor.Controls.ImageViewControl();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.Refresh = new System.Windows.Forms.Button();
             this.layerC = new DaAn.AdvancedRawEditor.Controls.LayerSettingControl();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -83,9 +81,7 @@
             // 
             // splitContainer2.Panel1
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.comboBox1);
             this.splitContainer2.Panel1.Controls.Add(this.button1);
-            this.splitContainer2.Panel1.Controls.Add(this.Refresh);
             this.splitContainer2.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             // 
             // splitContainer2.Panel2
@@ -96,36 +92,20 @@
             this.splitContainer2.SplitterDistance = 354;
             this.splitContainer2.TabIndex = 5;
             // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(21, 208);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(390, 21);
-            this.comboBox1.TabIndex = 4;
-            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(270, 76);
+            this.button1.Location = new System.Drawing.Point(364, 12);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(96, 69);
             this.button1.TabIndex = 0;
             this.button1.Text = "Generate";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // Refresh
-            // 
-            this.Refresh.Location = new System.Drawing.Point(270, 43);
-            this.Refresh.Name = "Refresh";
-            this.Refresh.Size = new System.Drawing.Size(75, 23);
-            this.Refresh.TabIndex = 3;
-            this.Refresh.Text = "button2";
-            this.Refresh.UseVisualStyleBackColor = true;
-            // 
             // layerC
             // 
             this.layerC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layerC.LayerSettingPresenter = null;
             this.layerC.Location = new System.Drawing.Point(0, 0);
             this.layerC.Name = "layerC";
             this.layerC.Size = new System.Drawing.Size(472, 307);
@@ -155,12 +135,10 @@
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button Refresh;
         private Controls.LayerSettingControl layerC;
         private Controls.ImageViewControl imageViewC;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 

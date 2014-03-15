@@ -47,6 +47,7 @@
     <Compile Include="EffectLayers\BrightnessLayer.cs" />
     <Compile Include="ConnectionBuilders\EmptyConnectionBuilder.cs" />
     <Compile Include="EffectLayers\ContrastLayer.cs" />
+    <Compile Include="EffectLayers\LevelsLayer.cs" />
     <Compile Include="EffectLayers\RGBMatrixLayer.cs" />
     <Compile Include="EffectLayers\WhiteBalanceLayer.cs" />
     <Compile Include="EffectLayers\CurvesLayer.cs" />
@@ -71,8 +72,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="MVP\Presenters\BWLayerPresenter.cs" />
+    <Compile Include="MVP\Presenters\ContrastLayerPresenter.cs" />
+    <Compile Include="MVP\Presenters\RGBMatrixLayerPresenter.cs" />
     <Compile Include="MVP\Presenters\SaturationLayerPresenter.cs" />
     <Compile Include="MVP\Presenters\ExposureLayerPresenter.cs" />
+    <Compile Include="MVP\Views\IRGBMatrixLayerView.cs" />
+    <Compile Include="MVP\Views\IContrastLayerView.cs" />
     <Compile Include="MVP\Views\ISaturationLayerView.cs" />
     <Compile Include="MVP\Views\IBWLayerView.cs" />
     <Compile Include="MVP\Views\IExposureLayerView.cs" />

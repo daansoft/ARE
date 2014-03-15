@@ -1,4 +1,5 @@
-﻿using DaAn.AdvancedRawEditor.Layers.Tools;
+﻿using DaAn.AdvancedRawEditor.Layers.MVP;
+using DaAn.AdvancedRawEditor.Layers.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,29 +15,23 @@ namespace DaAn.AdvancedRawEditor.Layers.EffectLayers
         public RGBMatrixLayer(Guid identificator, Matrix matrix)
             : base(identificator, 1)
         {
-            this.Matrix = matrix;
+            this._matrix = matrix;
+            this.OnChange();
         }
 
         public RGBMatrixLayer(Guid identificator)
             : this(identificator, Matrix.Ones(3))
         {
-            this._matrix.Set(0, 0, 0.6);
-            this._matrix.Set(1, 1, 0.8);
-            this._matrix.Set(2, 2, 1.0);
         }
 
-        public Matrix Matrix
+        public double Get(int x, int y)
         {
-            get
-            {
-                return this._matrix;
-            }
+            return this._matrix[x][y];
+        }
 
-            set
-            {
-                this._matrix = value;
-                this.OnChange();
-            }
+        public void Set(int x, int y, double value)
+        {
+            this._matrix[x][y] = value;
         }
 
         public override PixelColor GetPixelColor(int x, int y)
@@ -51,7 +46,7 @@ namespace DaAn.AdvancedRawEditor.Layers.EffectLayers
 
         public override object GetLayerView()
         {
-            return null;
+            return LayerMVPSetting.LayerViewFactory.GetRGBMatrixLayerView(this);
         }
     }
 }

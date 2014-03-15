@@ -41,7 +41,7 @@ namespace DaAn.AdvancedRawEditor.Layers.Layers
 
         public override object GetLayerView()
         {
-            throw new NotImplementedException();
+            return null;
         }
     }
 }

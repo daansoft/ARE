@@ -9,13 +9,14 @@ namespace DaAn.AdvancedRawEditor.Layers
 {
     public class LayerCollection
     {
-        private List<Layer> layers;
         private Layer selectedLayer;
 
         public LayerCollection()
         {
-            this.layers = new List<Layer>();
+            this.Layers = new List<Layer>();
         }
+
+        public List<Layer> Layers { get; set; }
 
         public Layer InputLayer { get; private set; }
 
@@ -40,7 +41,7 @@ namespace DaAn.AdvancedRawEditor.Layers
 
         public void Add(Layer layer)
         {
-            this.layers.Add(layer);
+            this.Layers.Add(layer);
         }
 
         public void Connect(Guid sourceLayerIdentificator, Guid destinationLayerIdentificator, int inputIndex)
@@ -64,14 +65,14 @@ namespace DaAn.AdvancedRawEditor.Layers
 
         public Layer ReadLayer(Guid layerIdentificator)
         {
-            return this.layers.SingleOrDefault(r => r.Identificator == layerIdentificator);
+            return this.Layers.SingleOrDefault(r => r.Identificator == layerIdentificator);
         }
 
         public void SetOutputLayer(Guid identificator)
         {
             if (this.OutputLayer != null)
             {
-                this.OutputLayer.Change -= layer_Change;
+                this.OutputLayer.Change -= this.layer_Change;
             }
 
             this.OutputLayer = this.ReadLayer(identificator);

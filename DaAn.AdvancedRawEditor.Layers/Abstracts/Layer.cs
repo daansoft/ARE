@@ -12,6 +12,7 @@ namespace DaAn.AdvancedRawEditor.Layers
         {
             this.Identificator = identificator;
             this.Layers = new Layer[inputLayerCount];
+            this.Enabled = true;
         }
 
         public event LayerEventHandler Change;

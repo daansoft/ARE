@@ -18,5 +18,13 @@ namespace DaAn.AdvancedRawEditor.MVP.Presenters
             this.LayerSettingView.Add(layer.GetLayerView());
         }
 
+
+        public void SetLayersView(List<Layer> layers)
+        {
+            foreach (var layer in layers)
+            {
+                this.LayerSettingView.Add(layer.GetLayerView());
+            }
+        }
     }
 }

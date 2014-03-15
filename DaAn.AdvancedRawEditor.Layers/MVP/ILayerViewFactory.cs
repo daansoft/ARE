@@ -15,5 +15,9 @@ namespace DaAn.AdvancedRawEditor.Layers.MVP
         IBWLayerView GetBWLayerView(BWLayer bwLayer);
 
         ISaturationLayerView GetSaturationLayerView(SaturationLayer saturationLayer);
+
+        IContrastLayerView GetContrastLayerView(ContrastLayer contrastLayer);
+
+        IRGBMatrixLayerView GetRGBMatrixLayerView(RGBMatrixLayer rgbMatrixLayer);
     }
 }
