@@ -23,12 +23,14 @@ namespace DaAn.AdvancedRawEditor.MVP.Presenters
             this.layerCollection.Change += layerCollection_Change;
 
             layerCollection.Add(new JpgFileLayer(new Guid("00000000-0000-0000-0000-000000000000"), "test.jpg"));
-            layerCollection.Add(new SamplingLayer(new Guid("00000000-0000-0000-0000-000000000001"), 0.25));
+            layerCollection.Add(new SamplingLayer(new Guid("00000000-0000-0000-0000-000000000001"), 1000, 1000));
+            //layerCollection.Add(new ExposureLayer(new Guid("00000000-0000-0000-0000-000000000001"), 0));
             layerCollection.Add(new CacheLayer(new Guid("00000000-0000-0000-0000-000000000002")));
+            //layerCollection.Add(new SolidColorLayer(new Guid("00000000-0000-0000-0000-000000000017")) { Color = PixelColor.FromNormalizedRGB(2, 0, 0) });
             layerCollection.Add(new ExposureLayer(new Guid("00000000-0000-0000-0000-000000000017"), 0.0));
             layerCollection.Add(new ContrastLayer(new Guid("00000000-0000-0000-0000-000000000018"), 1.0));
-            layerCollection.Add(new LevelsLayer(new Guid("00000000-0000-0000-0000-000000000050")));
-            layerCollection.Add(new CurvesLayer(new Guid("00000000-0000-0000-0000-000000000019")) { Enabled = true });
+            layerCollection.Add(new LevelsLayer(new Guid("00000000-0000-0000-0000-000000000050")) { Blacks = -0.0, Whites = 0.0 });
+            layerCollection.Add(new CurvesLayer(new Guid("00000000-0000-0000-0000-000000000019")) { Enabled = false });
 
 
             layerCollection.Connect(new Guid("00000000-0000-0000-0000-000000000000"), new Guid("00000000-0000-0000-0000-000000000001"), 0);

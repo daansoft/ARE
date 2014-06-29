@@ -47,6 +47,7 @@
     <Compile Include="EffectLayers\BrightnessLayer.cs" />
     <Compile Include="ConnectionBuilders\EmptyConnectionBuilder.cs" />
     <Compile Include="EffectLayers\ContrastLayer.cs" />
+    <Compile Include="EffectLayers\HSLLayer.cs" />
     <Compile Include="EffectLayers\LevelsLayer.cs" />
     <Compile Include="EffectLayers\RGBMatrixLayer.cs" />
     <Compile Include="EffectLayers\WhiteBalanceLayer.cs" />

@@ -23,7 +23,7 @@ namespace DaAn.AdvancedRawEditor.Layers.EffectLayers
 
         public override object GetLayerView()
         {
-            throw new NotImplementedException();
+            return null;
         }
     }
 }

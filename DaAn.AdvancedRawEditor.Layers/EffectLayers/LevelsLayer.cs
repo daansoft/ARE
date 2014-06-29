@@ -8,14 +8,14 @@ namespace DaAn.AdvancedRawEditor.Layers.EffectLayers
 {
     public class LevelsLayer : Layer
     {
-        public double InputMin;
-        public double InputMax;
+        public double Blacks;
+        public double Whites;
 
         public LevelsLayer(Guid identificator)
             : base(identificator, 1)
         {
-            this.InputMin = 0.0;
-            this.InputMax = 1.0;
+            this.Blacks = 0.0;
+            this.Whites = 0.0;
         }
 
         public override PixelColor GetPixelColor(int x, int y)
@@ -36,7 +36,7 @@ namespace DaAn.AdvancedRawEditor.Layers.EffectLayers
 
         private double Function(double value)
         {
-            return (value - this.InputMin) / (this.InputMax - this.InputMin);
+            return (value - this.Blacks) / (1.0 - this.Whites - this.Blacks);
         }
 
         public override object GetLayerView()
